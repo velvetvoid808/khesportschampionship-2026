@@ -15,7 +15,7 @@
 
     <style>
         /* =====================================================
-           NAVIGATION SYSTEM — V4
+           NAVIGATION SYSTEM — V3
         ===================================================== */
 
         .navbar {
@@ -90,62 +90,108 @@
         }
 
         /* =====================================================
-           REGISTER + RULES BUTTONS
+           FULL RULES BUTTON
         ===================================================== */
 
-        .nav-button,
-        .rules-button {
+        .nav-rules-button {
             position: relative;
-            overflow: hidden;
 
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
-            white-space: nowrap;
+            min-height: 38px;
 
-            text-decoration: none;
-
-            transition:
-                border-color 0.25s ease,
-                background 0.25s ease,
-                color 0.25s ease,
-                box-shadow 0.25s ease;
-        }
-
-        .nav-button {
-            margin-left: 18px;
-        }
-
-        .rules-button {
-            margin-left: 10px;
+            padding: 0 15px;
 
             border:
                 1px solid
-                rgba(34, 211, 238, 0.28);
+                rgba(168, 85, 247, 0.38);
 
             background:
-                rgba(34, 211, 238, 0.035);
+                linear-gradient(
+                    90deg,
+                    rgba(168, 85, 247, 0.08),
+                    rgba(34, 211, 238, 0.04)
+                );
 
-            color: #aeb5c4;
+            color: #d7d9df;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: 0.14em;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
         }
 
-        .rules-button:hover {
-            color: #f4f5f7;
+        .nav-rules-button::before {
+            content: "";
 
-            border-color:
-                rgba(34, 211, 238, 0.55);
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
 
             background:
-                rgba(34, 211, 238, 0.08);
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.20),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            transition:
+                left 0.55s ease;
+        }
+
+        .nav-rules-button:hover {
+            color: #ffffff;
+
+            border-color:
+                rgba(168, 85, 247, 0.65);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(168, 85, 247, 0.16),
+                    rgba(34, 211, 238, 0.07)
+                );
 
             box-shadow:
                 0 0 24px
-                rgba(34, 211, 238, 0.08);
+                rgba(168, 85, 247, 0.10);
+
+            transform:
+                translateY(-1px);
         }
 
-        .nav-button::before,
-        .rules-button::before {
+        .nav-rules-button:hover::before {
+            left: 150%;
+        }
+
+        /* Register button */
+
+        .nav-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
             content: "";
 
             position: absolute;
@@ -170,8 +216,7 @@
                 left 0.55s ease;
         }
 
-        .nav-button:hover::before,
-        .rules-button:hover::before {
+        .nav-button:hover::before {
             left: 150%;
         }
 
@@ -358,7 +403,9 @@
                 translateX(3px);
         }
 
-        /* Full Rules & Regulations mobile button */
+        /* =====================================================
+           MOBILE FULL RULES BUTTON
+        ===================================================== */
 
         .mobile-rules {
             display: flex;
@@ -372,34 +419,44 @@
 
             border:
                 1px solid
-                rgba(34,211,238,0.30);
+                rgba(168,85,247,0.38);
 
             background:
-                rgba(34,211,238,0.035);
+                linear-gradient(
+                    90deg,
+                    rgba(168,85,247,0.08),
+                    rgba(34,211,238,0.04)
+                );
 
-            color: #aeb5c4;
+            color: #d7d9df;
 
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 800;
 
-            letter-spacing: 0.16em;
-
-            text-decoration: none;
+            letter-spacing: 0.18em;
 
             transition:
                 color 0.25s ease,
                 border-color 0.25s ease,
-                background 0.25s ease;
+                background 0.25s ease,
+                transform 0.25s ease;
         }
 
         .mobile-rules:hover {
-            color: #f4f5f7;
+            color: #ffffff;
 
             border-color:
-                rgba(34,211,238,0.55);
+                rgba(168,85,247,0.65);
 
             background:
-                rgba(34,211,238,0.08);
+                linear-gradient(
+                    90deg,
+                    rgba(168,85,247,0.14),
+                    rgba(34,211,238,0.06)
+                );
+
+            transform:
+                translateX(3px);
         }
 
         .mobile-register {
@@ -479,10 +536,6 @@
             .nav-button {
                 margin-left: auto;
             }
-
-            .rules-button {
-                margin-left: 0;
-            }
         }
 
         @media (max-width: 760px) {
@@ -491,8 +544,11 @@
                 height: 68px;
             }
 
-            .nav-button,
-            .rules-button {
+            .nav-button {
+                display: none;
+            }
+
+            .nav-rules-button {
                 display: none;
             }
 
@@ -507,13 +563,12 @@
                 top: 78px;
             }
 
-            .nav-button,
-            .rules-button {
+            .nav-button {
                 display: inline-flex;
             }
 
-            .rules-button {
-                font-size: 9px;
+            .nav-rules-button {
+                display: inline-flex;
             }
         }
 
@@ -589,15 +644,16 @@
         </nav>
 
 
-        <!-- FULL RULES & REGULATIONS -->
+        <!-- FULL RULES -->
 
         <a
             href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-            class="rules-button"
+            class="nav-rules-button"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Open Full Rules and Regulations"
         >
-            RULES & REGULATIONS ↗
+            FULL RULES ↗
         </a>
 
 
@@ -681,7 +737,7 @@
         </nav>
 
 
-        <!-- FULL RULES DOCUMENT -->
+        <!-- MOBILE FULL RULES -->
 
         <a
             href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
@@ -689,11 +745,9 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-            FULL RULES & REGULATIONS ↗
+            FULL RULES ↗
         </a>
 
-
-        <!-- MOBILE REGISTER -->
 
         <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
