@@ -95,105 +95,96 @@
         }
 
         /* =====================================================
-           RULES BUTTON
+           NAV ACTION BUTTONS
+           
+           RULEBOOK + REGISTER
         ===================================================== */
 
-        .rules-button {
-            display: inline-flex;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
 
+            gap: 8px;
+
+            margin-left: auto;
+        }
+
+        .nav-button,
+        .nav-rulebook {
+            position: relative;
+            overflow: hidden;
+
+            display: inline-flex;
             align-items: center;
             justify-content: center;
 
-            min-height: 42px;
+            min-height: 40px;
 
-            padding: 0 18px;
+            padding: 0 16px;
 
-            border:
-                1px solid
-                rgba(168, 85, 247, 0.38);
+            border: 1px solid
+                rgba(168, 85, 247, 0.35);
 
             background:
-                linear-gradient(
-                    90deg,
-                    rgba(168, 85, 247, 0.10),
-                    rgba(34, 211, 238, 0.05)
-                );
+                rgba(168, 85, 247, 0.06);
 
-            color: #f4f5f7 !important;
+            color: #f4f5f7;
 
             font-size: 9px;
             font-weight: 800;
 
-            letter-spacing: 0.14em;
+            letter-spacing: 0.16em;
 
-            position: relative;
-            overflow: hidden;
+            text-decoration: none;
 
             transition:
                 border-color 0.25s ease,
                 background 0.25s ease,
-                box-shadow 0.25s ease,
-                transform 0.25s ease;
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        .rules-button::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -120%;
-
-            width: 70%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,0.22),
-                    transparent
-                );
-
-            transform: skewX(-20deg);
-
-            transition:
-                left 0.55s ease;
-        }
-
-        .rules-button:hover::before {
-            left: 150%;
-        }
-
-        .rules-button:hover {
+        .nav-button {
             border-color:
-                rgba(168, 85, 247, 0.70);
+                rgba(168, 85, 247, 0.55);
 
             background:
                 linear-gradient(
                     90deg,
-                    rgba(168, 85, 247, 0.18),
-                    rgba(34, 211, 238, 0.08)
+                    rgba(168, 85, 247, 0.14),
+                    rgba(34, 211, 238, 0.07)
                 );
+        }
 
-            box-shadow:
-                0 0 24px
+        .nav-rulebook {
+            border-color:
+                rgba(255, 255, 255, 0.13);
+
+            background:
+                rgba(255, 255, 255, 0.035);
+        }
+
+        .nav-button:hover,
+        .nav-rulebook:hover {
+            border-color:
+                rgba(168, 85, 247, 0.7);
+
+            background:
                 rgba(168, 85, 247, 0.12);
 
             transform:
                 translateY(-1px);
+
+            box-shadow:
+                0 8px 24px
+                rgba(0, 0, 0, 0.18);
         }
 
-        /* =====================================================
-           REGISTER BUTTON
-        ===================================================== */
+        /* Shimmer */
 
-        .nav-button {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-button::before {
+        .nav-button::before,
+        .nav-rulebook::before {
             content: "";
 
             position: absolute;
@@ -212,13 +203,15 @@
                     transparent
                 );
 
-            transform: skewX(-20deg);
+            transform:
+                skewX(-20deg);
 
             transition:
                 left 0.55s ease;
         }
 
-        .nav-button:hover::before {
+        .nav-button:hover::before,
+        .nav-rulebook:hover::before {
             left: 150%;
         }
 
@@ -409,11 +402,9 @@
                 translateX(3px);
         }
 
-        /* =====================================================
-           MOBILE RULES BUTTON
-        ===================================================== */
+        /* Mobile RULEBOOK */
 
-        .mobile-rules {
+        .mobile-rulebook {
             display: flex;
 
             align-items: center;
@@ -422,6 +413,47 @@
             min-height: 52px;
 
             margin-top: 10px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.13);
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color: #f4f5f7;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 0.18em;
+
+            text-decoration: none;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .mobile-rulebook:hover {
+            border-color:
+                rgba(168,85,247,0.45);
+
+            background:
+                rgba(168,85,247,0.08);
+        }
+
+        /* Mobile REGISTER */
+
+        .mobile-register {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            margin-top: 8px;
 
             border:
                 1px solid
@@ -441,48 +473,7 @@
 
             letter-spacing: 0.18em;
 
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .mobile-rules:hover {
-            border-color:
-                rgba(168,85,247,0.70);
-
-            background:
-                rgba(168,85,247,0.18);
-        }
-
-        /* =====================================================
-           MOBILE REGISTER
-        ===================================================== */
-
-        .mobile-register {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-height: 52px;
-
-            margin-top: 10px;
-
-            border:
-                1px solid
-                rgba(168,85,247,0.45);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(168,85,247,0.12),
-                    rgba(34,211,238,0.06)
-                );
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 0.18em;
+            text-decoration: none;
         }
 
         /* =====================================================
@@ -512,10 +503,6 @@
             visibility: visible;
         }
 
-        /* =====================================================
-           PREVENT SCROLLING WHILE MENU IS OPEN
-        ===================================================== */
-
         body.menu-open {
             overflow: hidden;
         }
@@ -524,10 +511,14 @@
            TABLET / IPAD
         ===================================================== */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
 
             .nav-links {
                 display: none;
+            }
+
+            .menu-toggle {
+                display: block;
             }
 
             .nav-container {
@@ -536,46 +527,43 @@
 
             /*
              * IMPORTANT:
-             * RULES + REGISTER + MENU stay together
-             * on the RIGHT side.
+             * The action buttons remain on the RIGHT.
+             * They do NOT move beside the KH logo.
              */
 
-            .rules-button {
-                display: inline-flex;
+            .nav-actions {
                 margin-left: auto;
             }
 
-            .nav-button {
-                display: inline-flex;
-                margin-left: 0;
-            }
-
-            .menu-toggle {
-                display: block;
+            .mobile-menu {
+                top: 68px;
             }
         }
 
         /* =====================================================
-           IPAD / TABLET MOBILE MENU POSITION
+           IPAD PORTRAIT
         ===================================================== */
 
-        @media (min-width: 761px) and (max-width: 1000px) {
+        @media (min-width: 761px) and (max-width: 1100px) {
 
-            .mobile-menu {
-                top: 78px;
-            }
-
-            .nav-button {
+            .nav-button,
+            .nav-rulebook {
                 display: inline-flex;
             }
 
-            .rules-button {
-                display: inline-flex;
+            .nav-button,
+            .nav-rulebook {
+                min-height: 40px;
+                padding: 0 14px;
+            }
+
+            .nav-container {
+                height: 68px;
             }
         }
 
         /* =====================================================
-           MOBILE
+           SMALL TABLETS / PHONES
         ===================================================== */
 
         @media (max-width: 760px) {
@@ -584,26 +572,15 @@
                 height: 68px;
             }
 
-            /*
-             * Hide action buttons from the header.
-             * They appear inside the mobile menu instead.
-             */
-
-            .rules-button,
-            .nav-button {
+            .nav-actions {
                 display: none;
             }
 
             .menu-toggle {
                 display: block;
-
                 margin-left: auto;
             }
         }
-
-        /* =====================================================
-           SMALL PHONES
-        ===================================================== */
 
         @media (max-width: 500px) {
 
@@ -631,11 +608,7 @@
 
         <!-- LOGO -->
 
-        <a
-            href="#home"
-            class="logo"
-            aria-label="KH Esports Championship Home"
-        >
+        <a href="#home" class="logo" aria-label="KH Esports Championship Home">
 
             <span class="logo-kh">KH</span>
 
@@ -648,107 +621,7 @@
 
         <!-- DESKTOP NAVIGATION -->
 
-        <nav
-            class="nav-links"
-            aria-label="Main navigation"
-        >
-
-            <a href="#home" class="active">
-                HOME
-            </a>
-
-            <a href="#about">
-                ABOUT
-            </a>
-
-            <a href="#titles">
-                TITLES
-            </a>
-
-            <a href="#tournament">
-                TOURNAMENT
-            </a>
-
-            <a href="#schedule">
-                SCHEDULE
-            </a>
-
-            <a href="#prizes">
-                PRIZES
-            </a>
-
-        </nav>
-
-
-        <!-- RULES BUTTON -->
-
-        <a
-            href="https://forms.gle/ioC8FZmgyLRmL6id6"
-            class="rules-button"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            RULES
-        </a>
-
-
-        <!-- DESKTOP REGISTER -->
-
-        <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
-            class="nav-button"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            REGISTER
-        </a>
-
-
-        <!-- MOBILE MENU BUTTON -->
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MOBILE MENU
-===================================================== -->
-
-<div
-    class="menu-backdrop"
-    id="menuBackdrop"
-></div>
-
-<div
-    class="mobile-menu"
-    id="mobileMenu"
->
-
-    <div class="mobile-menu-inner">
-
-        <span class="mobile-menu-label">
-            NAVIGATION / 2026
-        </span>
-
-
-        <nav
-            class="mobile-links"
-            aria-label="Mobile navigation"
-        >
+        <nav class="nav-links" aria-label="Main navigation">
 
             <a href="#home" class="active">
                 HOME
@@ -781,15 +654,114 @@
         </nav>
 
 
-        <!-- MOBILE RULES -->
+        <!-- NAVIGATION ACTIONS -->
+
+        <div class="nav-actions">
+
+            <!-- RULEBOOK -->
+
+            <a
+                href="https://forms.gle/ioC8FZmgyLRmL6id6"
+                class="nav-rulebook"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Rules and Regulations"
+            >
+                RULEBOOK ↗
+            </a>
+
+
+            <!-- REGISTER -->
+
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
+                class="nav-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                REGISTER
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<div class="menu-backdrop" id="menuBackdrop"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-inner">
+
+        <span class="mobile-menu-label">
+            NAVIGATION / 2026
+        </span>
+
+
+        <nav class="mobile-links" aria-label="Mobile navigation">
+
+            <a href="#home" class="active">
+                HOME
+            </a>
+
+            <a href="#about">
+                ABOUT
+            </a>
+
+            <a href="#titles">
+                TITLES
+            </a>
+
+            <a href="#tournament">
+                TOURNAMENT
+            </a>
+
+            <a href="#schedule">
+                SCHEDULE
+            </a>
+
+            <a href="#prizes">
+                PRIZES
+            </a>
+
+            <a href="#rules">
+                RULES
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE RULEBOOK -->
 
         <a
             href="https://forms.gle/ioC8FZmgyLRmL6id6"
-            class="mobile-rules"
+            class="mobile-rulebook"
             target="_blank"
             rel="noopener noreferrer"
         >
-            RULES & REGULATIONS ↗
+            RULEBOOK ↗
         </a>
 
 
@@ -861,18 +833,12 @@
 
         <div class="hero-actions">
 
-            <a
-                href="#titles"
-                class="primary-button"
-            >
+            <a href="#titles" class="primary-button">
                 EXPLORE CHAMPIONSHIP
                 <span>↗</span>
             </a>
 
-            <a
-                href="#tournament"
-                class="secondary-button"
-            >
+            <a href="#tournament" class="secondary-button">
                 VIEW FORMAT
             </a>
 
@@ -989,10 +955,7 @@
      ABOUT
 ===================================================== -->
 
-<section
-    id="about"
-    class="section about-section"
->
+<section id="about" class="section about-section">
 
     <div class="section-heading">
 
@@ -1094,10 +1057,7 @@
      TITLES
 ===================================================== -->
 
-<section
-    id="titles"
-    class="section titles-section"
->
+<section id="titles" class="section titles-section">
 
     <div class="section-heading">
 
@@ -1259,10 +1219,7 @@
      TOURNAMENT FORMAT
 ===================================================== -->
 
-<section
-    id="tournament"
-    class="section tournament-section"
->
+<section id="tournament" class="section tournament-section">
 
     <div class="section-heading">
 
@@ -1446,10 +1403,7 @@
      SCHEDULE
 ===================================================== -->
 
-<section
-    id="schedule"
-    class="section schedule-section"
->
+<section id="schedule" class="section schedule-section">
 
     <div class="section-heading">
 
@@ -1627,10 +1581,7 @@
      PRIZES
 ===================================================== -->
 
-<section
-    id="prizes"
-    class="section prizes-section"
->
+<section id="prizes" class="section prizes-section">
 
     <div class="section-heading">
 
@@ -1746,12 +1697,12 @@
 
 <!-- =====================================================
      RULES
+     
+     IMPORTANT:
+     THIS ORIGINAL RULES SECTION IS RETAINED.
 ===================================================== -->
 
-<section
-    id="rules"
-    class="section rules-section"
->
+<section id="rules" class="section rules-section">
 
     <div class="section-heading">
 
@@ -1866,6 +1817,91 @@
 
     </div>
 
+
+    <!-- FULL RULEBOOK CTA -->
+
+    <div
+        style="
+            margin-top: 36px;
+            padding: 24px;
+            border: 1px solid rgba(168,85,247,0.18);
+            background: rgba(168,85,247,0.035);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        "
+    >
+
+        <div>
+
+            <span
+                style="
+                    display:block;
+                    margin-bottom:8px;
+                    font-size:8px;
+                    letter-spacing:0.22em;
+                    color:#8d94a5;
+                "
+            >
+                FULL TOURNAMENT DOCUMENT
+            </span>
+
+            <strong
+                style="
+                    display:block;
+                    font-size:14px;
+                    letter-spacing:0.04em;
+                    color:#f4f5f7;
+                "
+            >
+                RULES & REGULATIONS
+            </strong>
+
+        </div>
+
+
+        <a
+            href="https://forms.gle/ioC8FZmgyLRmL6id6"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                min-height:44px;
+                padding:0 20px;
+                border:1px solid rgba(168,85,247,0.5);
+                background:linear-gradient(
+                    90deg,
+                    rgba(168,85,247,0.13),
+                    rgba(34,211,238,0.06)
+                );
+                color:#f4f5f7;
+                font-size:9px;
+                font-weight:800;
+                letter-spacing:0.16em;
+                text-decoration:none;
+                transition:
+                    transform 0.25s ease,
+                    border-color 0.25s ease,
+                    background 0.25s ease;
+            "
+            onmouseover="
+                this.style.transform='translateY(-1px)';
+                this.style.borderColor='rgba(168,85,247,0.8)';
+            "
+            onmouseout="
+                this.style.transform='translateY(0)';
+                this.style.borderColor='rgba(168,85,247,0.5)';
+            "
+        >
+            VIEW RULEBOOK ↗
+        </a>
+
+    </div>
+
 </section>
 
 
@@ -1873,10 +1909,7 @@
      REGISTRATION
 ===================================================== -->
 
-<section
-    id="register"
-    class="register-section"
->
+<section id="register" class="register-section">
 
     <div class="register-grid"></div>
 
