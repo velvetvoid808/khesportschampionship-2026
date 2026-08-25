@@ -15,7 +15,7 @@
 
     <style>
         /* =====================================================
-           NAVIGATION SYSTEM — V3
+           NAVIGATION SYSTEM
         ===================================================== */
 
         .navbar {
@@ -30,8 +30,6 @@
             border-bottom-color: rgba(168, 85, 247, 0.16);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
         }
-
-        /* Logo */
 
         .logo {
             position: relative;
@@ -360,8 +358,6 @@
             visibility: visible;
         }
 
-        /* Prevent scrolling while menu is open */
-
         body.menu-open {
             overflow: hidden;
         }
@@ -437,9 +433,11 @@
 
     <div class="nav-container">
 
-        <!-- LOGO -->
-
-        <a href="#home" class="logo" aria-label="KH Esports Championship Home">
+        <a
+            href="#home"
+            class="logo"
+            aria-label="KH Esports Championship Home"
+        >
 
             <span class="logo-kh">KH</span>
 
@@ -449,8 +447,6 @@
 
         </a>
 
-
-        <!-- DESKTOP NAVIGATION -->
 
         <nav class="nav-links" aria-label="Main navigation">
 
@@ -485,8 +481,6 @@
         </nav>
 
 
-        <!-- DESKTOP REGISTER -->
-
         <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
             class="nav-button"
@@ -496,8 +490,6 @@
             REGISTER
         </a>
 
-
-        <!-- MOBILE MENU BUTTON -->
 
         <button
             class="menu-toggle"
@@ -534,7 +526,7 @@
 
         <nav class="mobile-links" aria-label="Mobile navigation">
 
-            <a href="#home" class="active">
+            <a href="#home">
                 HOME
             </a>
 
@@ -625,7 +617,7 @@
 
         <p class="hero-description">
             A competitive esports championship organised by
-            TECHVERSE CLUB, SMJK Keat Hwa.
+            Techverse Club, SMJK Keat Hwa.
         </p>
 
 
@@ -790,7 +782,7 @@
 
 
             <p>
-                Organised by TECHVERSE CLUB, SMJK Keat Hwa,
+                Organised by Techverse Club, SMJK Keat Hwa,
                 the championship brings together two competitive
                 titles in a structured and professional tournament
                 environment.
@@ -879,7 +871,6 @@
 
 
     <div class="title-grid">
-
 
         <article class="title-card hok-card">
 
@@ -1649,7 +1640,7 @@
             target="_blank"
             rel="noopener noreferrer"
         >
-            REGISTER YOUR TEAM
+            REGISTER NOW
             <span>↗</span>
         </a>
 
@@ -1688,8 +1679,8 @@
             </span>
 
             <strong>
-                TECHVERSE CLUB<br>
-                SMJK KEAT HWA
+                Techverse Club<br>
+                SMJK Keat Hwa
             </strong>
 
         </div>
@@ -1702,8 +1693,8 @@
             </span>
 
             <strong>
-                SMJK KEAT HWA<br>
-                KEDAH, MALAYSIA
+                SMJK Keat Hwa<br>
+                Kedah, Malaysia
             </strong>
 
         </div>
@@ -1714,11 +1705,11 @@
     <div class="footer-bottom">
 
         <span>
-            © 2026 KH ESPORTS CHAMPIONSHIP
+            © 2026 KH Esports Championship
         </span>
 
         <span>
-            TECHVERSE CLUB
+            Techverse Club
         </span>
 
     </div>
@@ -1732,14 +1723,11 @@
 
 <script>
 
-(() => {
-
-    "use strict";
-
-
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+    /*
+     * =====================================================
+     * ELEMENTS
+     * =====================================================
+     */
 
     const navbar =
         document.getElementById("navbar");
@@ -1753,36 +1741,24 @@
     const menuBackdrop =
         document.getElementById("menuBackdrop");
 
-    const desktopLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
 
-    const mobileNavLinks =
-        document.querySelectorAll(
-            ".mobile-links a"
-        );
-
-    const sections =
-        document.querySelectorAll(
-            "main section[id]"
-        );
-
-
-    /* =====================================================
-       NAVBAR SCROLL STATE
-    ===================================================== */
+    /*
+     * =====================================================
+     * NAVBAR SCROLL STATE
+     * =====================================================
+     */
 
     function updateNavbar() {
 
-        if (!navbar) {
-            return;
-        }
+        if (window.scrollY > 30) {
 
-        navbar.classList.toggle(
-            "scrolled",
-            window.scrollY > 30
-        );
+            navbar.classList.add("scrolled");
+
+        } else {
+
+            navbar.classList.remove("scrolled");
+
+        }
 
     }
 
@@ -1796,19 +1772,13 @@
     updateNavbar();
 
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
+    /*
+     * =====================================================
+     * MOBILE MENU
+     * =====================================================
+     */
 
     function openMenu() {
-
-        if (
-            !mobileMenu ||
-            !menuBackdrop ||
-            !menuToggle
-        ) {
-            return;
-        }
 
         mobileMenu.classList.add("open");
 
@@ -1826,22 +1796,12 @@
             "Close navigation menu"
         );
 
-        document.body.classList.add(
-            "menu-open"
-        );
+        document.body.classList.add("menu-open");
 
     }
 
 
     function closeMenu() {
-
-        if (
-            !mobileMenu ||
-            !menuBackdrop ||
-            !menuToggle
-        ) {
-            return;
-        }
 
         mobileMenu.classList.remove("open");
 
@@ -1859,31 +1819,139 @@
             "Open navigation menu"
         );
 
-        document.body.classList.remove(
-            "menu-open"
-        );
+        document.body.classList.remove("menu-open");
 
     }
 
 
-    if (menuToggle) {
+    menuToggle.addEventListener(
+        "click",
+        function () {
 
-        menuToggle.addEventListener(
-            "click",
-            () => {
+            if (
+                mobileMenu.classList.contains("open")
+            ) {
 
-                if (
-                    mobileMenu &&
-                    mobileMenu.classList.contains("open")
-                ) {
+                closeMenu();
+
+            } else {
+
+                openMenu();
+
+            }
+
+        }
+    );
+
+
+    menuBackdrop.addEventListener(
+        "click",
+        closeMenu
+    );
+
+
+    /*
+     * =====================================================
+     * MOBILE LINK CLICK
+     * =====================================================
+     */
+
+    const mobileLinks =
+        document.querySelectorAll(
+            ".mobile-links a, .mobile-register"
+        );
+
+
+    mobileLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
 
                     closeMenu();
 
-                } else {
-
-                    openMenu();
-
                 }
+            );
+
+        }
+    );
+
+
+    /*
+     * =====================================================
+     * ACTIVE NAVIGATION
+     *
+     * IMPORTANT:
+     *
+     * We DO NOT permanently activate a link when it is
+     * clicked.
+     *
+     * The active state is determined ONLY by the section
+     * currently visible on screen.
+     *
+     * This prevents:
+     *
+     * ABOUT clicked
+     * ↓
+     * scroll down
+     * ↓
+     * ABOUT staying active forever
+     *
+     * =====================================================
+     */
+
+    const sections =
+        Array.from(
+            document.querySelectorAll(
+                "main section[id]"
+            )
+        );
+
+
+    const desktopLinks =
+        Array.from(
+            document.querySelectorAll(
+                ".nav-links a"
+            )
+        );
+
+
+    const mobileNavLinks =
+        Array.from(
+            document.querySelectorAll(
+                ".mobile-links a"
+            )
+        );
+
+
+    function setActiveNavigation(sectionId) {
+
+        desktopLinks.forEach(
+            function (link) {
+
+                const target =
+                    link.getAttribute("href");
+
+                link.classList.toggle(
+                    "active",
+                    target === "#" + sectionId
+                );
+
+            }
+        );
+
+
+        mobileNavLinks.forEach(
+            function (link) {
+
+                const target =
+                    link.getAttribute("href");
+
+                link.classList.toggle(
+                    "active",
+                    target === "#" + sectionId
+                );
 
             }
         );
@@ -1891,120 +1959,59 @@
     }
 
 
-    if (menuBackdrop) {
-
-        menuBackdrop.addEventListener(
-            "click",
-            closeMenu
-        );
-
-    }
-
-
-    /* =====================================================
-       MOBILE LINKS
-    ===================================================== */
-
-    document
-        .querySelectorAll(
-            ".mobile-links a, .mobile-register"
-        )
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeMenu
-            );
-
-        });
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-       
-       Only ONE navigation item can be active.
-    ===================================================== */
-
-    function setActiveSection(sectionId) {
-
-        desktopLinks.forEach(link => {
-
-            const isActive =
-                link.getAttribute("href") ===
-                "#" + sectionId;
-
-            link.classList.toggle(
-                "active",
-                isActive
-            );
-
-        });
-
-
-        mobileNavLinks.forEach(link => {
-
-            const isActive =
-                link.getAttribute("href") ===
-                "#" + sectionId;
-
-            link.classList.toggle(
-                "active",
-                isActive
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       ACTIVE SECTION DETECTION
-       
-       Uses the section closest to the navigation
-       trigger line. This prevents an old clicked item
-       from staying active while scrolling.
-    ===================================================== */
-
     function updateActiveNavigation() {
 
-        const scrollPosition =
-            window.scrollY +
-            (navbar ? navbar.offsetHeight : 0) +
-            40;
+        /*
+         * The reference line is placed below the navbar.
+         *
+         * Whichever section has crossed this line becomes
+         * the active section.
+         */
+
+        const navbarHeight =
+            navbar.offsetHeight || 68;
 
 
-        let currentSection = "home";
+        const referencePoint =
+            navbarHeight + 90;
 
 
-        sections.forEach(section => {
+        let currentSection =
+            sections[0]
+                ? sections[0].id
+                : "home";
+
+
+        for (
+            let i = 0;
+            i < sections.length;
+            i++
+        ) {
+
+            const section =
+                sections[i];
+
+            const rect =
+                section.getBoundingClientRect();
+
 
             if (
-                section.offsetTop <=
-                scrollPosition
+                rect.top <= referencePoint
             ) {
 
                 currentSection =
                     section.id;
 
+            } else {
+
+                break;
+
             }
-
-        });
-
-
-        /*
-         * Registration does not have a navigation item.
-         * Keep RULES highlighted while entering the final
-         * registration area.
-         */
-
-        if (currentSection === "register") {
-
-            currentSection = "rules";
 
         }
 
 
-        setActiveSection(
+        setActiveNavigation(
             currentSection
         );
 
@@ -2012,172 +2019,151 @@
 
 
     /*
-     * A small requestAnimationFrame lock prevents
-     * excessive calculations during fast scrolling.
+     * =====================================================
+     * SCROLL HANDLING
+     *
+     * requestAnimationFrame prevents multiple rapid
+     * navigation calculations during fast scrolling.
+     * =====================================================
      */
 
     let navigationFrame = null;
 
 
-    function requestNavigationUpdate() {
+    function handleScrollNavigation() {
 
-        if (navigationFrame !== null) {
+        if (
+            navigationFrame !== null
+        ) {
+
             return;
+
         }
 
 
         navigationFrame =
-            requestAnimationFrame(() => {
+            window.requestAnimationFrame(
+                function () {
 
-                updateActiveNavigation();
+                    updateActiveNavigation();
 
-                navigationFrame = null;
+                    navigationFrame = null;
 
-            });
+                }
+            );
 
     }
 
 
     window.addEventListener(
         "scroll",
-        requestNavigationUpdate,
-        { passive: true }
-    );
-
-
-    window.addEventListener(
-        "resize",
-        requestNavigationUpdate,
+        handleScrollNavigation,
         { passive: true }
     );
 
 
     /*
-     * Initial state.
+     * =====================================================
+     * CLICK NAVIGATION
+     *
+     * Clicking a navigation link does NOT add an active
+     * class manually.
+     *
+     * The browser scrolls to the target section, and the
+     * normal scroll system decides which link is active.
+     * =====================================================
      */
 
-    updateActiveNavigation();
-
-
-    /* =====================================================
-       NAVIGATION CLICK
-       
-       The clicked item becomes active immediately,
-       then normal scrolling logic takes control again.
-    ===================================================== */
-
-    function handleNavigationClick(event) {
-
-        const link =
-            event.currentTarget;
-
-        const href =
-            link.getAttribute("href");
-
-
-        if (
-            !href ||
-            !href.startsWith("#") ||
-            href === "#"
-        ) {
-            return;
-        }
-
-
-        const target =
-            document.querySelector(href);
-
-
-        if (!target) {
-            return;
-        }
-
-
-        event.preventDefault();
-
-
-        /*
-         * Immediately show the destination as active.
-         */
-
-        setActiveSection(
-            target.id
+    const allNavigationLinks =
+        document.querySelectorAll(
+            '.nav-links a[href^="#"], .mobile-links a[href^="#"]'
         );
 
 
-        /*
-         * Calculate the correct scroll position
-         * below the fixed navbar.
-         */
+    allNavigationLinks.forEach(
+        function (link) {
 
-        const navbarHeight =
-            navbar
-                ? navbar.offsetHeight
-                : 0;
+            link.addEventListener(
+                "click",
+                function () {
 
+                    /*
+                     * Do not manually add "active".
+                     * Remove stale active states immediately.
+                     */
 
-        const targetPosition =
-            target.getBoundingClientRect().top +
-            window.scrollY -
-            navbarHeight -
-            12;
+                    desktopLinks.forEach(
+                        function (item) {
 
+                            item.classList.remove(
+                                "active"
+                            );
 
-        window.scrollTo({
-
-            top: Math.max(
-                0,
-                targetPosition
-            ),
-
-            behavior: "smooth"
-
-        });
+                        }
+                    );
 
 
-        /*
-         * Close mobile navigation.
-         */
+                    mobileNavLinks.forEach(
+                        function (item) {
 
-        if (
-            mobileMenu &&
-            mobileMenu.classList.contains("open")
-        ) {
+                            item.classList.remove(
+                                "active"
+                            );
 
-            closeMenu();
+                        }
+                    );
+
+
+                    /*
+                     * Let the browser perform the normal
+                     * anchor navigation.
+                     *
+                     * The scroll listener will then assign
+                     * the correct active state.
+                     */
+
+                    setTimeout(
+                        updateActiveNavigation,
+                        100
+                    );
+
+                }
+            );
 
         }
+    );
+
+
+    /*
+     * =====================================================
+     * INITIAL ACTIVE STATE
+     * =====================================================
+     */
+
+    function initialiseNavigation() {
+
+        updateNavbar();
+
+        updateActiveNavigation();
 
     }
 
 
-    desktopLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            handleNavigationClick
-        );
-
-    });
+    window.addEventListener(
+        "load",
+        initialiseNavigation
+    );
 
 
-    mobileNavLinks.forEach(link => {
-
-        link.addEventListener(
-            "click",
-            handleNavigationClick
-        );
-
-    });
-
-
-    /* =====================================================
-       ESCAPE KEY
-    ===================================================== */
+    /*
+     * =====================================================
+     * ESCAPE KEY
+     * =====================================================
+     */
 
     document.addEventListener(
         "keydown",
-        event => {
+        function (event) {
 
             if (
                 event.key === "Escape"
@@ -2191,13 +2177,15 @@
     );
 
 
-    /* =====================================================
-       CLOSE MOBILE MENU ON DESKTOP RESIZE
-    ===================================================== */
+    /*
+     * =====================================================
+     * RESIZE
+     * =====================================================
+     */
 
     window.addEventListener(
         "resize",
-        () => {
+        function () {
 
             if (
                 window.innerWidth > 1000
@@ -2207,11 +2195,34 @@
 
             }
 
+
+            updateActiveNavigation();
+
         }
     );
 
 
-})();
+    /*
+     * =====================================================
+     * SAFETY CHECK
+     * =====================================================
+     *
+     * If the browser restores a previous scroll position
+     * after refresh, calculate the correct navigation state.
+     *
+     * =====================================================
+     */
+
+    window.addEventListener(
+        "pageshow",
+        function () {
+
+            updateNavbar();
+
+            updateActiveNavigation();
+
+        }
+    );
 
 </script>
 
