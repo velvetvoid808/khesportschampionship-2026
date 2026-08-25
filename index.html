@@ -87,14 +87,20 @@
 
         /* =====================================================
            NAV BUTTONS
-           RULEBOOK + REGISTER
         ===================================================== */
 
         .nav-actions {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
             gap: 8px;
+
+            /* IMPORTANT:
+               Keeps Rulebook + Register pushed to the
+               far right, immediately before the menu button. */
             margin-left: auto;
+
+            flex-shrink: 0;
         }
 
         .nav-button,
@@ -106,12 +112,8 @@
             align-items: center;
             justify-content: center;
 
-            width: 104px;
-            min-width: 104px;
-            height: 40px;
             min-height: 40px;
-
-            padding: 0 12px;
+            padding: 0 16px;
 
             border: 1px solid rgba(168, 85, 247, 0.42);
 
@@ -192,7 +194,7 @@
 
 
         /* =====================================================
-           MOBILE / TABLET MENU BUTTON
+           MOBILE MENU BUTTON
         ===================================================== */
 
         .menu-toggle {
@@ -200,6 +202,8 @@
 
             width: 42px;
             height: 42px;
+
+            flex: 0 0 42px;
 
             padding: 0;
 
@@ -214,6 +218,8 @@
 
             position: relative;
             z-index: 1101;
+
+            margin-left: 0;
         }
 
         .menu-toggle span {
@@ -260,7 +266,7 @@
 
 
         /* =====================================================
-           MOBILE / TABLET MENU
+           MOBILE MENU
         ===================================================== */
 
         .mobile-menu {
@@ -381,7 +387,7 @@
 
         /* =====================================================
            MOBILE REGISTER + RULEBOOK
-           EXACT SAME SIZE
+           SAME SIZE
         ===================================================== */
 
         .mobile-action {
@@ -391,7 +397,6 @@
             justify-content: center;
 
             width: 100%;
-            height: 52px;
             min-height: 52px;
 
             margin-top: 10px;
@@ -560,47 +565,17 @@
 
 
         /* =====================================================
-           DESKTOP
+           RESPONSIVE NAVIGATION
         ===================================================== */
 
-        @media (min-width: 1101px) {
+        @media (max-width: 1100px) {
 
             .nav-links {
-                display: flex;
-            }
-
-            .nav-actions {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
-        }
-
-
-        /* =====================================================
-           TABLET / iPAD PORTRAIT
-           
-           Navigation hidden.
-           Rulebook + Register hidden.
-           Only hamburger remains.
-        ===================================================== */
-
-        @media (min-width: 761px)
-            and (max-width: 1100px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-actions {
                 display: none;
             }
 
             .menu-toggle {
                 display: block;
-                margin-left: auto;
             }
 
             .nav-container {
@@ -610,55 +585,59 @@
 
 
         /* =====================================================
-           iPAD LANDSCAPE
+           IPAD / TABLET LANDSCAPE
            
-           RULEBOOK + REGISTER stay visible.
-           HAMBURGER stays on the right.
-           Full navigation opens through hamburger.
+           RULEBOOK → REGISTER → MENU
+           
+           Everything stays on the far right.
         ===================================================== */
 
-        @media (min-width: 761px)
-            and (max-width: 1366px)
-            and (orientation: landscape) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .nav-actions {
-                display: flex;
-                margin-left: auto;
-            }
-
-            .nav-button,
-            .nav-rulebook {
-                width: 104px;
-                min-width: 104px;
-                height: 38px;
-                min-height: 38px;
-
-                padding: 0 10px;
-
-                font-size: 8px;
-            }
-
-            .menu-toggle {
-                display: block;
-                flex-shrink: 0;
-            }
+        @media (min-width: 761px) and (max-width: 1100px) {
 
             .nav-container {
-                gap: 8px;
+                display: flex;
+                align-items: center;
             }
 
             .mobile-menu {
                 top: 78px;
             }
+
+            .nav-actions {
+                display: flex;
+
+                margin-left: auto;
+
+                align-items: center;
+                justify-content: flex-end;
+
+                gap: 8px;
+
+                flex-shrink: 0;
+            }
+
+            .nav-button,
+            .nav-rulebook {
+                min-height: 38px;
+                padding: 0 13px;
+                font-size: 8px;
+            }
+
+            .menu-toggle {
+                display: block;
+
+                margin-left: 0;
+
+                flex: 0 0 42px;
+            }
         }
 
 
         /* =====================================================
-           MOBILE
+           IPAD PORTRAIT / MOBILE
+           
+           Rulebook + Register disappear from the header
+           and remain available inside the three-line menu.
         ===================================================== */
 
         @media (max-width: 760px) {
@@ -667,24 +646,17 @@
                 height: 68px;
             }
 
-            .nav-links {
-                display: none;
-            }
-
             .nav-actions {
                 display: none;
             }
 
             .menu-toggle {
                 display: block;
+
                 margin-left: auto;
             }
         }
 
-
-        /* =====================================================
-           SMALL MOBILE
-        ===================================================== */
 
         @media (max-width: 500px) {
 
@@ -694,11 +666,6 @@
 
             .mobile-links a {
                 min-height: 50px;
-            }
-
-            .mobile-action {
-                height: 52px;
-                min-height: 52px;
             }
         }
 
@@ -789,9 +756,7 @@
         </nav>
 
 
-        <!-- =================================================
-             DESKTOP / iPAD LANDSCAPE ACTIONS
-        ================================================== -->
+        <!-- DESKTOP / IPAD LANDSCAPE ACTION BUTTONS -->
 
         <div class="nav-actions">
 
@@ -821,9 +786,7 @@
         </div>
 
 
-        <!-- =================================================
-             HAMBURGER
-        ================================================== -->
+        <!-- MOBILE / TABLET MENU BUTTON -->
 
         <button
             class="menu-toggle"
@@ -844,7 +807,7 @@
 
 
 <!-- =====================================================
-     MOBILE / TABLET MENU BACKDROP
+     MOBILE MENU
 ===================================================== -->
 
 <div
@@ -852,10 +815,6 @@
     id="menuBackdrop"
 ></div>
 
-
-<!-- =====================================================
-     MOBILE / TABLET MENU
-===================================================== -->
 
 <div
     class="mobile-menu"
@@ -917,7 +876,7 @@
         </a>
 
 
-        <!-- REGISTRATION -->
+        <!-- REGISTER -->
 
         <a
             href="https://forms.gle/n1F13zaxE4oSdtKV6"
@@ -2003,7 +1962,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MOBILE / TABLET MENU
+       MOBILE MENU
     ===================================================== */
 
     function openMenu() {
@@ -2236,13 +2195,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "resize",
         () => {
 
-            /*
-             * Only close the menu when returning to
-             * full desktop navigation.
-             */
-
             if (
-                window.innerWidth > 1366
+                window.innerWidth > 1100
             ) {
 
                 closeMenu();
@@ -2309,15 +2263,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       REPEATING SCROLL REVEAL ANIMATION
+       REPEATING SCROLL ANIMATION
        
-       The element becomes visible when entering the
-       viewport and is reset after leaving it.
-
-       Therefore:
-       Scroll down  → animation
-       Scroll up    → animation again
-       Scroll down  → animation again
+       IMPORTANT:
+       The animation is NOT permanently marked as done.
+       When an element leaves the viewport, its animation
+       class is removed. Therefore, when the user scrolls
+       to it again, the animation plays again.
     ===================================================== */
 
     const revealElements =
@@ -2346,6 +2298,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         } else {
 
+                            /*
+                             * Remove the class when the element
+                             * leaves the viewport so the animation
+                             * can replay on the next scroll.
+                             */
+
                             entry.target.classList.remove(
                                 "reveal-visible"
                             );
@@ -2356,15 +2314,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 },
                 {
-                    threshold: 0.08,
-
-                    /*
-                     * Slightly more forgiving on
-                     * iPad and mobile screens.
-                     */
-
+                    threshold: 0.12,
                     rootMargin:
-                        "0px 0px -5% 0px"
+                        "0px 0px -8% 0px"
                 }
             );
 
@@ -2380,6 +2332,10 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     } else {
+
+        /*
+         * Fallback for older browsers.
+         */
 
         revealElements.forEach(
             element => {
