@@ -15,7 +15,7 @@
 
     <style>
         /* =====================================================
-           NAVIGATION SYSTEM — V3
+           NAVIGATION SYSTEM — V4
         ===================================================== */
 
         .navbar {
@@ -30,6 +30,8 @@
             border-bottom-color: rgba(168, 85, 247, 0.16);
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
         }
+
+        /* Logo */
 
         .logo {
             position: relative;
@@ -46,6 +48,8 @@
             text-shadow:
                 0 0 18px rgba(168, 85, 247, 0.45);
         }
+
+        /* Desktop navigation */
 
         .nav-links a {
             position: relative;
@@ -85,12 +89,63 @@
             color: #f4f5f7;
         }
 
-        .nav-button {
+        /* =====================================================
+           REGISTER + RULES BUTTONS
+        ===================================================== */
+
+        .nav-button,
+        .rules-button {
             position: relative;
             overflow: hidden;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            white-space: nowrap;
+
+            text-decoration: none;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        .nav-button::before {
+        .nav-button {
+            margin-left: 18px;
+        }
+
+        .rules-button {
+            margin-left: 10px;
+
+            border:
+                1px solid
+                rgba(34, 211, 238, 0.28);
+
+            background:
+                rgba(34, 211, 238, 0.035);
+
+            color: #aeb5c4;
+        }
+
+        .rules-button:hover {
+            color: #f4f5f7;
+
+            border-color:
+                rgba(34, 211, 238, 0.55);
+
+            background:
+                rgba(34, 211, 238, 0.08);
+
+            box-shadow:
+                0 0 24px
+                rgba(34, 211, 238, 0.08);
+        }
+
+        .nav-button::before,
+        .rules-button::before {
             content: "";
 
             position: absolute;
@@ -115,9 +170,12 @@
                 left 0.55s ease;
         }
 
-        .nav-button:hover::before {
+        .nav-button:hover::before,
+        .rules-button:hover::before {
             left: 150%;
         }
+
+        /* Mobile menu button */
 
         .menu-toggle {
             display: none;
@@ -182,6 +240,8 @@
             top: 21px;
             transform: rotate(-45deg);
         }
+
+        /* Mobile navigation panel */
 
         .mobile-menu {
             position: fixed;
@@ -298,7 +358,9 @@
                 translateX(3px);
         }
 
-        .mobile-register {
+        /* Full Rules & Regulations mobile button */
+
+        .mobile-rules {
             display: flex;
 
             align-items: center;
@@ -307,6 +369,48 @@
             min-height: 52px;
 
             margin-top: 10px;
+
+            border:
+                1px solid
+                rgba(34,211,238,0.30);
+
+            background:
+                rgba(34,211,238,0.035);
+
+            color: #aeb5c4;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+
+            text-decoration: none;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .mobile-rules:hover {
+            color: #f4f5f7;
+
+            border-color:
+                rgba(34,211,238,0.55);
+
+            background:
+                rgba(34,211,238,0.08);
+        }
+
+        .mobile-register {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            margin-top: 8px;
 
             border:
                 1px solid
@@ -324,6 +428,8 @@
 
             letter-spacing: 0.18em;
         }
+
+        /* Mobile backdrop */
 
         .menu-backdrop {
             position: fixed;
@@ -348,122 +454,13 @@
             visibility: visible;
         }
 
+        /* Prevent scrolling while menu is open */
+
         body.menu-open {
             overflow: hidden;
         }
 
-        /* =====================================================
-           FULL RULES & REGULATIONS BUTTON
-        ===================================================== */
-
-        .rules-document-link {
-            margin-top: 42px;
-
-            display: flex;
-            justify-content: center;
-        }
-
-        .rules-document-link a {
-            position: relative;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 28px;
-
-            min-width: 280px;
-
-            padding: 16px 20px;
-
-            border:
-                1px solid
-                rgba(168, 85, 247, 0.35);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(168, 85, 247, 0.08),
-                    rgba(34, 211, 238, 0.04)
-                );
-
-            color: #f4f5f7;
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 0.16em;
-
-            text-decoration: none;
-
-            overflow: hidden;
-
-            transition:
-                border-color 0.3s ease,
-                background 0.3s ease,
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .rules-document-link a::before {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            left: -120%;
-
-            width: 70%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,0.16),
-                    transparent
-                );
-
-            transform: skewX(-20deg);
-
-            transition:
-                left 0.55s ease;
-        }
-
-        .rules-document-link a:hover {
-            border-color:
-                rgba(168, 85, 247, 0.75);
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(168, 85, 247, 0.14),
-                    rgba(34, 211, 238, 0.07)
-                );
-
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 10px 35px
-                rgba(168, 85, 247, 0.12);
-        }
-
-        .rules-document-link a:hover::before {
-            left: 150%;
-        }
-
-        .rules-document-link a span:last-child {
-            font-size: 16px;
-
-            transition:
-                transform 0.3s ease;
-        }
-
-        .rules-document-link a:hover span:last-child {
-            transform:
-                translate(3px, -3px);
-        }
+        /* Mobile nav */
 
         @media (max-width: 1000px) {
 
@@ -482,6 +479,10 @@
             .nav-button {
                 margin-left: auto;
             }
+
+            .rules-button {
+                margin-left: 0;
+            }
         }
 
         @media (max-width: 760px) {
@@ -490,7 +491,8 @@
                 height: 68px;
             }
 
-            .nav-button {
+            .nav-button,
+            .rules-button {
                 display: none;
             }
 
@@ -505,8 +507,13 @@
                 top: 78px;
             }
 
-            .nav-button {
+            .nav-button,
+            .rules-button {
                 display: inline-flex;
+            }
+
+            .rules-button {
+                font-size: 9px;
             }
         }
 
@@ -518,16 +525,6 @@
 
             .mobile-links a {
                 min-height: 50px;
-            }
-
-            .rules-document-link {
-                margin-top: 32px;
-            }
-
-            .rules-document-link a {
-                min-width: 0;
-                width: 100%;
-                max-width: 360px;
             }
         }
     </style>
@@ -544,6 +541,8 @@
 
     <div class="nav-container">
 
+        <!-- LOGO -->
+
         <a href="#home" class="logo" aria-label="KH Esports Championship Home">
 
             <span class="logo-kh">KH</span>
@@ -554,6 +553,8 @@
 
         </a>
 
+
+        <!-- DESKTOP NAVIGATION -->
 
         <nav class="nav-links" aria-label="Main navigation">
 
@@ -588,6 +589,20 @@
         </nav>
 
 
+        <!-- FULL RULES & REGULATIONS -->
+
+        <a
+            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
+            class="rules-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            RULES & REGULATIONS ↗
+        </a>
+
+
+        <!-- DESKTOP REGISTER -->
+
         <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
             class="nav-button"
@@ -597,6 +612,8 @@
             REGISTER
         </a>
 
+
+        <!-- MOBILE MENU BUTTON -->
 
         <button
             class="menu-toggle"
@@ -663,6 +680,20 @@
 
         </nav>
 
+
+        <!-- FULL RULES DOCUMENT -->
+
+        <a
+            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
+            class="mobile-rules"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            FULL RULES & REGULATIONS ↗
+        </a>
+
+
+        <!-- MOBILE REGISTER -->
 
         <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
@@ -1711,31 +1742,6 @@
 
     </div>
 
-
-    <!-- =================================================
-         FULL RULES & REGULATIONS
-    ================================================= -->
-
-    <div class="rules-document-link">
-
-        <a
-            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <span>
-                VIEW FULL RULES &amp; REGULATIONS
-            </span>
-
-            <span>
-                ↗
-            </span>
-
-        </a>
-
-    </div>
-
 </section>
 
 
@@ -1887,6 +1893,13 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
+    /*
+     * Only sections with IDs participate in the active
+     * navigation system.
+     *
+     * .stats-section has no ID, therefore it is ignored.
+     */
+
     const sections =
         Array.from(
             document.querySelectorAll("main section[id]")
@@ -1918,6 +1931,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SET ACTIVE NAVIGATION
+       
+       IMPORTANT:
+       This is the ONLY function that adds/removes
+       the active class.
     ===================================================== */
 
     function setActiveSection(sectionId) {
@@ -1968,6 +1985,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const navbarHeight =
             navbar ? navbar.offsetHeight : 0;
 
+
+        /*
+         * The activation point sits slightly below the
+         * fixed navigation bar.
+         */
 
         const activationPoint =
             window.scrollY +
@@ -2023,6 +2045,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SMOOTH NAVIGATION
+       
+       Clicking a navigation item does NOT permanently
+       assign .active.
+       
+       The scroll position remains the source of truth.
     ===================================================== */
 
     function handleNavigationClick(event) {
@@ -2061,8 +2088,17 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
 
+        /*
+         * Close mobile menu if necessary.
+         */
+
         closeMenu();
 
+
+        /*
+         * Calculate target position using the current
+         * navbar height.
+         */
 
         const navbarHeight =
             navbar ? navbar.offsetHeight : 0;
@@ -2073,6 +2109,12 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollY -
             navbarHeight;
 
+
+        /*
+         * Scroll smoothly.
+         *
+         * We deliberately DO NOT add .active here.
+         */
 
         window.scrollTo({
 
@@ -2087,6 +2129,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
+        /*
+         * Update URL without forcing another jump.
+         */
 
         if (
             window.history &&
@@ -2292,6 +2338,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SCROLL
+       
+       requestAnimationFrame keeps the navigation responsive
+       without unnecessarily recalculating layout on every
+       single scroll event.
     ===================================================== */
 
     let scrollTicking =
@@ -2398,6 +2448,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateActiveNavigation();
 
+
+    /*
+     * Recalculate after the page has fully settled.
+     * This helps when the browser restores scroll position
+     * or when fonts/layout finish loading.
+     */
 
     window.setTimeout(
         updateActiveNavigation,
