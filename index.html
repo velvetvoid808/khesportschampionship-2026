@@ -15,7 +15,7 @@
 
     <style>
         /* =====================================================
-           NAVIGATION SYSTEM — V3
+           NAVIGATION SYSTEM — V4
         ===================================================== */
 
         .navbar {
@@ -31,7 +31,9 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
         }
 
-        /* Logo */
+        /* =====================================================
+           LOGO
+        ===================================================== */
 
         .logo {
             position: relative;
@@ -49,7 +51,9 @@
                 0 0 18px rgba(168, 85, 247, 0.45);
         }
 
-        /* Desktop navigation */
+        /* =====================================================
+           DESKTOP NAVIGATION
+        ===================================================== */
 
         .nav-links a {
             position: relative;
@@ -58,6 +62,7 @@
 
         .nav-links a::after {
             content: "";
+
             position: absolute;
 
             left: 0;
@@ -90,19 +95,18 @@
         }
 
         /* =====================================================
-           FULL RULES BUTTON
+           RULES BUTTON
         ===================================================== */
 
-        .nav-rules-button {
-            position: relative;
-
+        .rules-button {
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
-            min-height: 38px;
+            min-height: 42px;
 
-            padding: 0 15px;
+            padding: 0 18px;
 
             border:
                 1px solid
@@ -111,30 +115,28 @@
             background:
                 linear-gradient(
                     90deg,
-                    rgba(168, 85, 247, 0.08),
-                    rgba(34, 211, 238, 0.04)
+                    rgba(168, 85, 247, 0.10),
+                    rgba(34, 211, 238, 0.05)
                 );
 
-            color: #d7d9df;
+            color: #f4f5f7 !important;
 
             font-size: 9px;
             font-weight: 800;
 
             letter-spacing: 0.14em;
 
-            white-space: nowrap;
-
+            position: relative;
             overflow: hidden;
 
             transition:
-                color 0.25s ease,
                 border-color 0.25s ease,
                 background 0.25s ease,
                 box-shadow 0.25s ease,
                 transform 0.25s ease;
         }
 
-        .nav-rules-button::before {
+        .rules-button::before {
             content: "";
 
             position: absolute;
@@ -149,7 +151,7 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,0.20),
+                    rgba(255,255,255,0.22),
                     transparent
                 );
 
@@ -159,32 +161,32 @@
                 left 0.55s ease;
         }
 
-        .nav-rules-button:hover {
-            color: #ffffff;
+        .rules-button:hover::before {
+            left: 150%;
+        }
 
+        .rules-button:hover {
             border-color:
-                rgba(168, 85, 247, 0.65);
+                rgba(168, 85, 247, 0.70);
 
             background:
                 linear-gradient(
                     90deg,
-                    rgba(168, 85, 247, 0.16),
-                    rgba(34, 211, 238, 0.07)
+                    rgba(168, 85, 247, 0.18),
+                    rgba(34, 211, 238, 0.08)
                 );
 
             box-shadow:
                 0 0 24px
-                rgba(168, 85, 247, 0.10);
+                rgba(168, 85, 247, 0.12);
 
             transform:
                 translateY(-1px);
         }
 
-        .nav-rules-button:hover::before {
-            left: 150%;
-        }
-
-        /* Register button */
+        /* =====================================================
+           REGISTER BUTTON
+        ===================================================== */
 
         .nav-button {
             position: relative;
@@ -220,7 +222,9 @@
             left: 150%;
         }
 
-        /* Mobile menu button */
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
 
         .menu-toggle {
             display: none;
@@ -286,7 +290,9 @@
             transform: rotate(-45deg);
         }
 
-        /* Mobile navigation panel */
+        /* =====================================================
+           MOBILE NAVIGATION PANEL
+        ===================================================== */
 
         .mobile-menu {
             position: fixed;
@@ -404,7 +410,7 @@
         }
 
         /* =====================================================
-           MOBILE FULL RULES BUTTON
+           MOBILE RULES BUTTON
         ===================================================== */
 
         .mobile-rules {
@@ -419,16 +425,16 @@
 
             border:
                 1px solid
-                rgba(168,85,247,0.38);
+                rgba(168,85,247,0.45);
 
             background:
                 linear-gradient(
                     90deg,
-                    rgba(168,85,247,0.08),
-                    rgba(34,211,238,0.04)
+                    rgba(168,85,247,0.12),
+                    rgba(34,211,238,0.06)
                 );
 
-            color: #d7d9df;
+            color: #f4f5f7;
 
             font-size: 10px;
             font-weight: 800;
@@ -436,28 +442,21 @@
             letter-spacing: 0.18em;
 
             transition:
-                color 0.25s ease,
-                border-color 0.25s ease,
                 background 0.25s ease,
-                transform 0.25s ease;
+                border-color 0.25s ease;
         }
 
         .mobile-rules:hover {
-            color: #ffffff;
-
             border-color:
-                rgba(168,85,247,0.65);
+                rgba(168,85,247,0.70);
 
             background:
-                linear-gradient(
-                    90deg,
-                    rgba(168,85,247,0.14),
-                    rgba(34,211,238,0.06)
-                );
-
-            transform:
-                translateX(3px);
+                rgba(168,85,247,0.18);
         }
+
+        /* =====================================================
+           MOBILE REGISTER
+        ===================================================== */
 
         .mobile-register {
             display: flex;
@@ -467,7 +466,7 @@
 
             min-height: 52px;
 
-            margin-top: 8px;
+            margin-top: 10px;
 
             border:
                 1px solid
@@ -486,7 +485,9 @@
             letter-spacing: 0.18em;
         }
 
-        /* Mobile backdrop */
+        /* =====================================================
+           MOBILE BACKDROP
+        ===================================================== */
 
         .menu-backdrop {
             position: fixed;
@@ -511,13 +512,17 @@
             visibility: visible;
         }
 
-        /* Prevent scrolling while menu is open */
+        /* =====================================================
+           PREVENT SCROLLING WHILE MENU IS OPEN
+        ===================================================== */
 
         body.menu-open {
             overflow: hidden;
         }
 
-        /* Mobile nav */
+        /* =====================================================
+           TABLET / IPAD
+        ===================================================== */
 
         @media (max-width: 1000px) {
 
@@ -525,37 +530,34 @@
                 display: none;
             }
 
-            .menu-toggle {
-                display: block;
-            }
-
             .nav-container {
-                gap: 12px;
+                gap: 10px;
             }
 
-            .nav-button {
+            /*
+             * IMPORTANT:
+             * RULES + REGISTER + MENU stay together
+             * on the RIGHT side.
+             */
+
+            .rules-button {
+                display: inline-flex;
                 margin-left: auto;
             }
-        }
-
-        @media (max-width: 760px) {
-
-            .nav-container {
-                height: 68px;
-            }
 
             .nav-button {
-                display: none;
-            }
-
-            .nav-rules-button {
-                display: none;
+                display: inline-flex;
+                margin-left: 0;
             }
 
             .menu-toggle {
                 display: block;
             }
         }
+
+        /* =====================================================
+           IPAD / TABLET MOBILE MENU POSITION
+        ===================================================== */
 
         @media (min-width: 761px) and (max-width: 1000px) {
 
@@ -567,10 +569,41 @@
                 display: inline-flex;
             }
 
-            .nav-rules-button {
+            .rules-button {
                 display: inline-flex;
             }
         }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                height: 68px;
+            }
+
+            /*
+             * Hide action buttons from the header.
+             * They appear inside the mobile menu instead.
+             */
+
+            .rules-button,
+            .nav-button {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+
+                margin-left: auto;
+            }
+        }
+
+        /* =====================================================
+           SMALL PHONES
+        ===================================================== */
 
         @media (max-width: 500px) {
 
@@ -598,7 +631,11 @@
 
         <!-- LOGO -->
 
-        <a href="#home" class="logo" aria-label="KH Esports Championship Home">
+        <a
+            href="#home"
+            class="logo"
+            aria-label="KH Esports Championship Home"
+        >
 
             <span class="logo-kh">KH</span>
 
@@ -611,7 +648,10 @@
 
         <!-- DESKTOP NAVIGATION -->
 
-        <nav class="nav-links" aria-label="Main navigation">
+        <nav
+            class="nav-links"
+            aria-label="Main navigation"
+        >
 
             <a href="#home" class="active">
                 HOME
@@ -637,23 +677,18 @@
                 PRIZES
             </a>
 
-            <a href="#rules">
-                RULES
-            </a>
-
         </nav>
 
 
-        <!-- FULL RULES -->
+        <!-- RULES BUTTON -->
 
         <a
-            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-            class="nav-rules-button"
+            href="https://forms.gle/ioC8FZmgyLRmL6id6"
+            class="rules-button"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Open Full Rules and Regulations"
         >
-            FULL RULES
+            RULES
         </a>
 
 
@@ -693,9 +728,15 @@
      MOBILE MENU
 ===================================================== -->
 
-<div class="menu-backdrop" id="menuBackdrop"></div>
+<div
+    class="menu-backdrop"
+    id="menuBackdrop"
+></div>
 
-<div class="mobile-menu" id="mobileMenu">
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
 
     <div class="mobile-menu-inner">
 
@@ -704,7 +745,10 @@
         </span>
 
 
-        <nav class="mobile-links" aria-label="Mobile navigation">
+        <nav
+            class="mobile-links"
+            aria-label="Mobile navigation"
+        >
 
             <a href="#home" class="active">
                 HOME
@@ -737,17 +781,19 @@
         </nav>
 
 
-        <!-- MOBILE FULL RULES -->
+        <!-- MOBILE RULES -->
 
         <a
-            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
+            href="https://forms.gle/ioC8FZmgyLRmL6id6"
             class="mobile-rules"
             target="_blank"
             rel="noopener noreferrer"
         >
-            FULL RULES ↗
+            RULES & REGULATIONS ↗
         </a>
 
+
+        <!-- MOBILE REGISTER -->
 
         <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
@@ -815,12 +861,18 @@
 
         <div class="hero-actions">
 
-            <a href="#titles" class="primary-button">
+            <a
+                href="#titles"
+                class="primary-button"
+            >
                 EXPLORE CHAMPIONSHIP
                 <span>↗</span>
             </a>
 
-            <a href="#tournament" class="secondary-button">
+            <a
+                href="#tournament"
+                class="secondary-button"
+            >
                 VIEW FORMAT
             </a>
 
@@ -937,7 +989,10 @@
      ABOUT
 ===================================================== -->
 
-<section id="about" class="section about-section">
+<section
+    id="about"
+    class="section about-section"
+>
 
     <div class="section-heading">
 
@@ -1039,7 +1094,10 @@
      TITLES
 ===================================================== -->
 
-<section id="titles" class="section titles-section">
+<section
+    id="titles"
+    class="section titles-section"
+>
 
     <div class="section-heading">
 
@@ -1201,7 +1259,10 @@
      TOURNAMENT FORMAT
 ===================================================== -->
 
-<section id="tournament" class="section tournament-section">
+<section
+    id="tournament"
+    class="section tournament-section"
+>
 
     <div class="section-heading">
 
@@ -1385,7 +1446,10 @@
      SCHEDULE
 ===================================================== -->
 
-<section id="schedule" class="section schedule-section">
+<section
+    id="schedule"
+    class="section schedule-section"
+>
 
     <div class="section-heading">
 
@@ -1563,7 +1627,10 @@
      PRIZES
 ===================================================== -->
 
-<section id="prizes" class="section prizes-section">
+<section
+    id="prizes"
+    class="section prizes-section"
+>
 
     <div class="section-heading">
 
@@ -1681,7 +1748,10 @@
      RULES
 ===================================================== -->
 
-<section id="rules" class="section rules-section">
+<section
+    id="rules"
+    class="section rules-section"
+>
 
     <div class="section-heading">
 
@@ -1803,7 +1873,10 @@
      REGISTRATION
 ===================================================== -->
 
-<section id="register" class="register-section">
+<section
+    id="register"
+    class="register-section"
+>
 
     <div class="register-grid"></div>
 
@@ -1985,10 +2058,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SET ACTIVE NAVIGATION
-       
-       IMPORTANT:
-       This is the ONLY function that adds/removes
-       the active class.
     ===================================================== */
 
     function setActiveSection(sectionId) {
@@ -2039,11 +2108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const navbarHeight =
             navbar ? navbar.offsetHeight : 0;
 
-
-        /*
-         * The activation point sits slightly below the
-         * fixed navigation bar.
-         */
 
         const activationPoint =
             window.scrollY +
@@ -2099,11 +2163,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SMOOTH NAVIGATION
-       
-       Clicking a navigation item does NOT permanently
-       assign .active.
-       
-       The scroll position remains the source of truth.
     ===================================================== */
 
     function handleNavigationClick(event) {
@@ -2142,17 +2201,8 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
 
-        /*
-         * Close mobile menu if necessary.
-         */
-
         closeMenu();
 
-
-        /*
-         * Calculate target position using the current
-         * navbar height.
-         */
 
         const navbarHeight =
             navbar ? navbar.offsetHeight : 0;
@@ -2163,12 +2213,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollY -
             navbarHeight;
 
-
-        /*
-         * Scroll smoothly.
-         *
-         * We deliberately DO NOT add .active here.
-         */
 
         window.scrollTo({
 
@@ -2183,10 +2227,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
-        /*
-         * Update URL without forcing another jump.
-         */
 
         if (
             window.history &&
@@ -2392,10 +2432,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SCROLL
-       
-       requestAnimationFrame keeps the navigation responsive
-       without unnecessarily recalculating layout on every
-       single scroll event.
     ===================================================== */
 
     let scrollTicking =
@@ -2502,12 +2538,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateActiveNavigation();
 
-
-    /*
-     * Recalculate after the page has fully settled.
-     * This helps when the browser restores scroll position
-     * or when fonts/layout finish loading.
-     */
 
     window.setTimeout(
         updateActiveNavigation,
