@@ -12,7 +12,420 @@
     >
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =====================================================
+           NAVIGATION SYSTEM — V3
+        ===================================================== */
+
+        .navbar {
+            transition:
+                background 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(6, 7, 11, 0.88);
+            border-bottom-color: rgba(168, 85, 247, 0.16);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.22);
+        }
+
+        /* Logo */
+
+        .logo {
+            position: relative;
+        }
+
+        .logo-kh {
+            transition:
+                color 0.25s ease,
+                text-shadow 0.25s ease;
+        }
+
+        .logo:hover .logo-kh {
+            color: #ffffff;
+            text-shadow:
+                0 0 18px rgba(168, 85, 247, 0.45);
+        }
+
+        /* Desktop navigation */
+
+        .nav-links a {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #a855f7,
+                    #22d3ee
+                );
+
+            transform: scaleX(0);
+            transform-origin: center;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a.active {
+            color: #f4f5f7;
+        }
+
+        /* Register button */
+
+        .nav-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-button::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.25),
+                    transparent
+                );
+
+            transform: skewX(-20deg);
+
+            transition:
+                left 0.55s ease;
+        }
+
+        .nav-button:hover::before {
+            left: 150%;
+        }
+
+        /* Mobile menu button */
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            padding: 0;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            cursor: pointer;
+
+            position: relative;
+
+            z-index: 1101;
+        }
+
+        .menu-toggle span {
+            position: absolute;
+
+            left: 11px;
+
+            width: 19px;
+            height: 1px;
+
+            background: #f4f5f7;
+
+            transition:
+                transform 0.3s ease,
+                top 0.3s ease,
+                opacity 0.25s ease;
+        }
+
+        .menu-toggle span:nth-child(1) {
+            top: 15px;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            top: 21px;
+        }
+
+        .menu-toggle span:nth-child(3) {
+            top: 27px;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            top: 21px;
+            transform: rotate(45deg);
+        }
+
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.open span:nth-child(3) {
+            top: 21px;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile navigation panel */
+
+        .mobile-menu {
+            position: fixed;
+
+            top: 68px;
+            left: 0;
+            right: 0;
+
+            z-index: 1099;
+
+            padding: 18px 16px 24px;
+
+            background:
+                rgba(6,7,11,0.96);
+
+            backdrop-filter:
+                blur(24px);
+
+            -webkit-backdrop-filter:
+                blur(24px);
+
+            border-bottom:
+                1px solid
+                rgba(168,85,247,0.18);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,0.35);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform:
+                translateY(-15px);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+        .mobile-menu-inner {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mobile-menu-label {
+            display: block;
+
+            margin-bottom: 12px;
+
+            font-size: 8px;
+            letter-spacing: 0.22em;
+
+            color: #8d94a5;
+        }
+
+        .mobile-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 8px;
+        }
+
+        .mobile-links a {
+            min-height: 54px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            background:
+                rgba(255,255,255,0.025);
+
+            font-size: 10px;
+            letter-spacing: 0.14em;
+
+            color: #8d94a5;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .mobile-links a:hover,
+        .mobile-links a.active {
+            color: #f4f5f7;
+
+            border-color:
+                rgba(168,85,247,0.45);
+
+            background:
+                rgba(168,85,247,0.08);
+
+            transform:
+                translateX(3px);
+        }
+
+        .mobile-register {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 52px;
+
+            margin-top: 10px;
+
+            border:
+                1px solid
+                rgba(168,85,247,0.45);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(168,85,247,0.12),
+                    rgba(34,211,238,0.06)
+                );
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 0.18em;
+        }
+
+        /* Mobile backdrop */
+
+        .menu-backdrop {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1098;
+
+            background:
+                rgba(0,0,0,0.45);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .menu-backdrop.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Prevent scrolling while menu is open */
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Mobile nav */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-container {
+                gap: 12px;
+            }
+
+            .nav-button {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                height: 68px;
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (min-width: 761px) and (max-width: 1000px) {
+
+            .mobile-menu {
+                top: 78px;
+            }
+
+            .nav-button {
+                display: inline-flex;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .mobile-links {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-links a {
+                min-height: 50px;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
@@ -24,45 +437,79 @@
 
     <div class="nav-container">
 
-        <a
-            href="#home"
-            class="logo"
-            aria-label="KH Esports Championship Home"
-        >
+        <!-- LOGO -->
+
+        <a href="#home" class="logo" aria-label="KH Esports Championship Home">
+
             <span class="logo-kh">KH</span>
-            <span class="logo-text">ESPORTS</span>
+
+            <span class="logo-text">
+                ESPORTS
+            </span>
+
         </a>
 
 
+        <!-- DESKTOP NAVIGATION -->
+
         <nav class="nav-links" aria-label="Main navigation">
 
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#titles">TITLES</a>
-            <a href="#tournament">TOURNAMENT</a>
-            <a href="#schedule">SCHEDULE</a>
-            <a href="#prizes">PRIZES</a>
-            <a href="#rules">RULES</a>
+            <a href="#home" class="active">
+                HOME
+            </a>
+
+            <a href="#about">
+                ABOUT
+            </a>
+
+            <a href="#titles">
+                TITLES
+            </a>
+
+            <a href="#tournament">
+                TOURNAMENT
+            </a>
+
+            <a href="#schedule">
+                SCHEDULE
+            </a>
+
+            <a href="#prizes">
+                PRIZES
+            </a>
+
+            <a href="#rules">
+                RULES
+            </a>
 
         </nav>
 
 
-        <a href="#register" class="nav-button">
+        <!-- DESKTOP REGISTER -->
+
+        <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
+            class="nav-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             REGISTER
         </a>
 
 
+        <!-- MOBILE MENU BUTTON -->
+
         <button
             class="menu-toggle"
             id="menuToggle"
-            type="button"
             aria-label="Open navigation menu"
             aria-expanded="false"
-            aria-controls="mobileMenu"
         >
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
     </div>
@@ -74,18 +521,9 @@
      MOBILE MENU
 ===================================================== -->
 
-<div
-    class="menu-backdrop"
-    id="menuBackdrop"
-    aria-hidden="true"
-></div>
+<div class="menu-backdrop" id="menuBackdrop"></div>
 
-
-<div
-    class="mobile-menu"
-    id="mobileMenu"
-    aria-hidden="true"
->
+<div class="mobile-menu" id="mobileMenu">
 
     <div class="mobile-menu-inner">
 
@@ -94,25 +532,44 @@
         </span>
 
 
-        <nav
-            class="mobile-links"
-            aria-label="Mobile navigation"
-        >
+        <nav class="mobile-links" aria-label="Mobile navigation">
 
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#titles">TITLES</a>
-            <a href="#tournament">TOURNAMENT</a>
-            <a href="#schedule">SCHEDULE</a>
-            <a href="#prizes">PRIZES</a>
-            <a href="#rules">RULES</a>
+            <a href="#home" class="active">
+                HOME
+            </a>
+
+            <a href="#about">
+                ABOUT
+            </a>
+
+            <a href="#titles">
+                TITLES
+            </a>
+
+            <a href="#tournament">
+                TOURNAMENT
+            </a>
+
+            <a href="#schedule">
+                SCHEDULE
+            </a>
+
+            <a href="#prizes">
+                PRIZES
+            </a>
+
+            <a href="#rules">
+                RULES
+            </a>
 
         </nav>
 
 
         <a
-            href="#register"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
             class="mobile-register"
+            target="_blank"
+            rel="noopener noreferrer"
         >
             REGISTER NOW ↗
         </a>
@@ -140,16 +597,24 @@
     <div class="hero-content">
 
         <div class="eyebrow">
+
             <span></span>
+
             KEAT HWA • MALAYSIA
+
         </div>
 
 
         <h1>
+
             <span>KH</span>
+
             <strong>ESPORTS</strong>
+
             <em>CHAMPIONSHIP</em>
+
             <small>2026</small>
+
         </h1>
 
 
@@ -160,7 +625,7 @@
 
         <p class="hero-description">
             A competitive esports championship organised by
-            Kelab Techverse SMJK Keat Hwa.
+            TECHVERSE CLUB, SMJK Keat Hwa.
         </p>
 
 
@@ -181,9 +646,11 @@
 
 
     <div class="hero-side">
+
         <div class="vertical-label">
             EST. 2026
         </div>
+
     </div>
 
 
@@ -229,26 +696,54 @@
 <section class="stats-section">
 
     <div class="stat-card">
-        <span class="stat-number">32</span>
-        <span class="stat-label">TEAMS / TITLE</span>
+
+        <span class="stat-number">
+            32
+        </span>
+
+        <span class="stat-label">
+            TEAMS / TITLE
+        </span>
+
     </div>
 
 
     <div class="stat-card">
-        <span class="stat-number">5</span>
-        <span class="stat-label">PLAYERS / TEAM</span>
+
+        <span class="stat-number">
+            5
+        </span>
+
+        <span class="stat-label">
+            PLAYERS / TEAM
+        </span>
+
     </div>
 
 
     <div class="stat-card">
-        <span class="stat-number">RM1,300</span>
-        <span class="stat-label">PRIZE / TITLE</span>
+
+        <span class="stat-number">
+            RM1,300
+        </span>
+
+        <span class="stat-label">
+            PRIZE / TITLE
+        </span>
+
     </div>
 
 
     <div class="stat-card">
-        <span class="stat-number">2</span>
-        <span class="stat-label">ESPORTS TITLES</span>
+
+        <span class="stat-number">
+            2
+        </span>
+
+        <span class="stat-label">
+            ESPORTS TITLES
+        </span>
+
     </div>
 
 </section>
@@ -295,7 +790,7 @@
 
 
             <p>
-                Organised by Kelab Techverse SMJK Keat Hwa,
+                Organised by TECHVERSE CLUB, SMJK Keat Hwa,
                 the championship brings together two competitive
                 titles in a structured and professional tournament
                 environment.
@@ -307,23 +802,46 @@
         <div class="about-objectives">
 
             <div class="objective">
+
                 <span>01</span>
-                <p>Positive use of digital technology</p>
+
+                <p>
+                    Positive use of digital technology
+                </p>
+
             </div>
 
+
             <div class="objective">
+
                 <span>02</span>
-                <p>Communication & teamwork</p>
+
+                <p>
+                    Communication & teamwork
+                </p>
+
             </div>
 
+
             <div class="objective">
+
                 <span>03</span>
-                <p>Healthy competitive culture</p>
+
+                <p>
+                    Healthy competitive culture
+                </p>
+
             </div>
 
+
             <div class="objective">
+
                 <span>04</span>
-                <p>Professional esports management</p>
+
+                <p>
+                    Professional esports management
+                </p>
+
             </div>
 
         </div>
@@ -362,6 +880,7 @@
 
     <div class="title-grid">
 
+
         <article class="title-card hok-card">
 
             <div class="title-number">
@@ -390,13 +909,28 @@
                 <div class="title-meta">
 
                     <div>
-                        <strong>32</strong>
-                        <span>TEAMS</span>
+
+                        <strong>
+                            32
+                        </strong>
+
+                        <span>
+                            TEAMS
+                        </span>
+
                     </div>
 
+
                     <div>
-                        <strong>RM1,300</strong>
-                        <span>PRIZE POOL</span>
+
+                        <strong>
+                            RM1,300
+                        </strong>
+
+                        <span>
+                            PRIZE POOL
+                        </span>
+
                     </div>
 
                 </div>
@@ -439,13 +973,28 @@
                 <div class="title-meta">
 
                     <div>
-                        <strong>32</strong>
-                        <span>TEAMS</span>
+
+                        <strong>
+                            32
+                        </strong>
+
+                        <span>
+                            TEAMS
+                        </span>
+
                     </div>
 
+
                     <div>
-                        <strong>RM1,300</strong>
-                        <span>PRIZE POOL</span>
+
+                        <strong>
+                            RM1,300
+                        </strong>
+
+                        <span>
+                            PRIZE POOL
+                        </span>
+
                     </div>
 
                 </div>
@@ -494,49 +1043,107 @@
     <div class="format-flow">
 
         <div class="format-step">
+
             <span>01</span>
-            <strong>32 TEAMS</strong>
-            <small>PER TITLE</small>
+
+            <strong>
+                32 TEAMS
+            </strong>
+
+            <small>
+                PER TITLE
+            </small>
+
         </div>
+
 
         <div class="flow-line"></div>
 
+
         <div class="format-step">
+
             <span>02</span>
-            <strong>8 GROUPS</strong>
-            <small>4 TEAMS / GROUP</small>
+
+            <strong>
+                8 GROUPS
+            </strong>
+
+            <small>
+                4 TEAMS / GROUP
+            </small>
+
         </div>
+
 
         <div class="flow-line"></div>
 
+
         <div class="format-step">
+
             <span>03</span>
-            <strong>GROUP STAGE</strong>
-            <small>ROUND ROBIN • BO1</small>
+
+            <strong>
+                GROUP STAGE
+            </strong>
+
+            <small>
+                ROUND ROBIN • BO1
+            </small>
+
         </div>
+
 
         <div class="flow-line"></div>
 
+
         <div class="format-step">
+
             <span>04</span>
-            <strong>QUARTERFINALS</strong>
-            <small>BO3</small>
+
+            <strong>
+                QUARTERFINALS
+            </strong>
+
+            <small>
+                BO3
+            </small>
+
         </div>
 
+
         <div class="flow-line"></div>
+
 
         <div class="format-step">
+
             <span>05</span>
-            <strong>SEMIFINALS</strong>
-            <small>BO3</small>
+
+            <strong>
+                SEMIFINALS
+            </strong>
+
+            <small>
+                BO3
+            </small>
+
         </div>
 
+
         <div class="flow-line"></div>
+
 
         <div class="format-step final-step">
+
             <span>06</span>
-            <strong>GRAND FINAL</strong>
-            <small>BO5</small>
+
+            <strong>
+                GRAND FINAL
+            </strong>
+
+            <small>
+                BO5
+            </small>
+
         </div>
 
     </div>
@@ -546,7 +1153,9 @@
 
         <div class="feature-card">
 
-            <span>GLOBAL BP</span>
+            <span>
+                GLOBAL BP
+            </span>
 
             <p>
                 Global Ban & Pick is used throughout
@@ -558,7 +1167,9 @@
 
         <div class="feature-card">
 
-            <span>NO SEEDING</span>
+            <span>
+                NO SEEDING
+            </span>
 
             <p>
                 All teams have an equal opportunity
@@ -570,7 +1181,9 @@
 
         <div class="feature-card">
 
-            <span>ELIMINATION</span>
+            <span>
+                ELIMINATION
+            </span>
 
             <p>
                 Knockout-stage losers are immediately
@@ -616,21 +1229,30 @@
         <article class="schedule-card">
 
             <div class="schedule-date">
+
                 <span>NOV</span>
+
                 <strong>20</strong>
+
                 <small>FRI</small>
+
             </div>
 
+
             <div class="schedule-info">
+
                 <span class="schedule-game">
                     HONOR OF KINGS
                 </span>
 
-                <h3>DAY 01</h3>
+                <h3>
+                    DAY 01
+                </h3>
 
                 <p>
                     8:00 AM — 6:00 PM
                 </p>
+
             </div>
 
         </article>
@@ -639,21 +1261,30 @@
         <article class="schedule-card">
 
             <div class="schedule-date">
+
                 <span>NOV</span>
+
                 <strong>21</strong>
+
                 <small>SAT</small>
+
             </div>
 
+
             <div class="schedule-info">
+
                 <span class="schedule-game">
                     HONOR OF KINGS
                 </span>
 
-                <h3>DAY 02</h3>
+                <h3>
+                    DAY 02
+                </h3>
 
                 <p>
                     9:00 AM — 7:30 PM
                 </p>
+
             </div>
 
         </article>
@@ -662,21 +1293,30 @@
         <article class="schedule-card">
 
             <div class="schedule-date">
+
                 <span>NOV</span>
+
                 <strong>27</strong>
+
                 <small>FRI</small>
+
             </div>
 
+
             <div class="schedule-info">
+
                 <span class="schedule-game">
                     MOBILE LEGENDS
                 </span>
 
-                <h3>DAY 01</h3>
+                <h3>
+                    DAY 01
+                </h3>
 
                 <p>
                     8:00 AM — 6:00 PM
                 </p>
+
             </div>
 
         </article>
@@ -685,21 +1325,30 @@
         <article class="schedule-card">
 
             <div class="schedule-date">
+
                 <span>NOV</span>
+
                 <strong>28</strong>
+
                 <small>SAT</small>
+
             </div>
 
+
             <div class="schedule-info">
+
                 <span class="schedule-game">
                     MOBILE LEGENDS
                 </span>
 
-                <h3>DAY 02</h3>
+                <h3>
+                    DAY 02
+                </h3>
 
                 <p>
                     9:00 AM — 7:30 PM
                 </p>
+
             </div>
 
         </article>
@@ -709,11 +1358,17 @@
 
     <div class="venue-banner">
 
-        <span>VENUE</span>
+        <span>
+            VENUE
+        </span>
 
-        <strong>SMJK KEAT HWA</strong>
+        <strong>
+            SMJK KEAT HWA
+        </strong>
 
-        <span>KEDAH • MALAYSIA</span>
+        <span>
+            KEDAH • MALAYSIA
+        </span>
 
     </div>
 
@@ -749,11 +1404,17 @@
 
     <div class="prize-total">
 
-        <span>TOTAL CASH PRIZE</span>
+        <span>
+            TOTAL CASH PRIZE
+        </span>
 
-        <strong>RM2,600</strong>
+        <strong>
+            RM2,600
+        </strong>
 
-        <small>ACROSS BOTH TITLES</small>
+        <small>
+            ACROSS BOTH TITLES
+        </small>
 
     </div>
 
@@ -761,30 +1422,70 @@
     <div class="prize-grid">
 
         <div class="prize-card">
-            <span>01</span>
-            <strong>RM500</strong>
-            <p>CHAMPION</p>
+
+            <span>
+                01
+            </span>
+
+            <strong>
+                RM500
+            </strong>
+
+            <p>
+                CHAMPION
+            </p>
+
         </div>
 
 
         <div class="prize-card">
-            <span>02</span>
-            <strong>RM300</strong>
-            <p>RUNNER-UP</p>
+
+            <span>
+                02
+            </span>
+
+            <strong>
+                RM300
+            </strong>
+
+            <p>
+                RUNNER-UP
+            </p>
+
         </div>
 
 
         <div class="prize-card">
-            <span>03</span>
-            <strong>RM200</strong>
-            <p>SEMIFINALIST ×2</p>
+
+            <span>
+                03
+            </span>
+
+            <strong>
+                RM200
+            </strong>
+
+            <p>
+                SEMIFINALIST ×2
+            </p>
+
         </div>
 
 
         <div class="prize-card fmvp-card">
-            <span>FMVP</span>
-            <strong>RM100</strong>
-            <p>SPECIAL AWARD</p>
+
+            <span>
+                FMVP
+            </span>
+
+            <strong>
+                RM100
+            </strong>
+
+            <p>
+                SPECIAL AWARD
+            </p>
+
         </div>
 
     </div>
@@ -823,7 +1524,9 @@
 
         <div class="rule">
 
-            <span>01</span>
+            <span>
+                01
+            </span>
 
             <div>
 
@@ -843,7 +1546,9 @@
 
         <div class="rule">
 
-            <span>02</span>
+            <span>
+                02
+            </span>
 
             <div>
 
@@ -864,7 +1569,9 @@
 
         <div class="rule">
 
-            <span>03</span>
+            <span>
+                03
+            </span>
 
             <div>
 
@@ -884,7 +1591,9 @@
 
         <div class="rule">
 
-            <span>04</span>
+            <span>
+                04
+            </span>
 
             <div>
 
@@ -934,8 +1643,13 @@
         </p>
 
 
-        <a href="#" class="primary-button">
-            REGISTRATION COMING SOON
+        <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeuu2JXZsAfn1VX5Y8wua4t8VMsjaTc_fgjWUucysINEVbTdA/viewform"
+            class="primary-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            REGISTER YOUR TEAM
             <span>↗</span>
         </a>
 
@@ -974,7 +1688,7 @@
             </span>
 
             <strong>
-                KELAB TECHVERSE<br>
+                TECHVERSE CLUB<br>
                 SMJK KEAT HWA
             </strong>
 
@@ -1012,7 +1726,494 @@
 </footer>
 
 
-<script src="script.js"></script>
+<!-- =====================================================
+     NAVIGATION JAVASCRIPT
+===================================================== -->
+
+<script>
+
+(() => {
+
+    "use strict";
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const navbar =
+        document.getElementById("navbar");
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const mobileMenu =
+        document.getElementById("mobileMenu");
+
+    const menuBackdrop =
+        document.getElementById("menuBackdrop");
+
+    const desktopLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
+
+    const mobileNavLinks =
+        document.querySelectorAll(
+            ".mobile-links a"
+        );
+
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
+
+
+    /* =====================================================
+       NAVBAR SCROLL STATE
+    ===================================================== */
+
+    function updateNavbar() {
+
+        if (!navbar) {
+            return;
+        }
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 30
+        );
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        { passive: true }
+    );
+
+    updateNavbar();
+
+
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
+
+    function openMenu() {
+
+        if (
+            !mobileMenu ||
+            !menuBackdrop ||
+            !menuToggle
+        ) {
+            return;
+        }
+
+        mobileMenu.classList.add("open");
+
+        menuBackdrop.classList.add("open");
+
+        menuToggle.classList.add("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        document.body.classList.add(
+            "menu-open"
+        );
+
+    }
+
+
+    function closeMenu() {
+
+        if (
+            !mobileMenu ||
+            !menuBackdrop ||
+            !menuToggle
+        ) {
+            return;
+        }
+
+        mobileMenu.classList.remove("open");
+
+        menuBackdrop.classList.remove("open");
+
+        menuToggle.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        document.body.classList.remove(
+            "menu-open"
+        );
+
+    }
+
+
+    if (menuToggle) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    mobileMenu &&
+                    mobileMenu.classList.contains("open")
+                ) {
+
+                    closeMenu();
+
+                } else {
+
+                    openMenu();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (menuBackdrop) {
+
+        menuBackdrop.addEventListener(
+            "click",
+            closeMenu
+        );
+
+    }
+
+
+    /* =====================================================
+       MOBILE LINKS
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            ".mobile-links a, .mobile-register"
+        )
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        });
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+       
+       Only ONE navigation item can be active.
+    ===================================================== */
+
+    function setActiveSection(sectionId) {
+
+        desktopLinks.forEach(link => {
+
+            const isActive =
+                link.getAttribute("href") ===
+                "#" + sectionId;
+
+            link.classList.toggle(
+                "active",
+                isActive
+            );
+
+        });
+
+
+        mobileNavLinks.forEach(link => {
+
+            const isActive =
+                link.getAttribute("href") ===
+                "#" + sectionId;
+
+            link.classList.toggle(
+                "active",
+                isActive
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       ACTIVE SECTION DETECTION
+       
+       Uses the section closest to the navigation
+       trigger line. This prevents an old clicked item
+       from staying active while scrolling.
+    ===================================================== */
+
+    function updateActiveNavigation() {
+
+        const scrollPosition =
+            window.scrollY +
+            (navbar ? navbar.offsetHeight : 0) +
+            40;
+
+
+        let currentSection = "home";
+
+
+        sections.forEach(section => {
+
+            if (
+                section.offsetTop <=
+                scrollPosition
+            ) {
+
+                currentSection =
+                    section.id;
+
+            }
+
+        });
+
+
+        /*
+         * Registration does not have a navigation item.
+         * Keep RULES highlighted while entering the final
+         * registration area.
+         */
+
+        if (currentSection === "register") {
+
+            currentSection = "rules";
+
+        }
+
+
+        setActiveSection(
+            currentSection
+        );
+
+    }
+
+
+    /*
+     * A small requestAnimationFrame lock prevents
+     * excessive calculations during fast scrolling.
+     */
+
+    let navigationFrame = null;
+
+
+    function requestNavigationUpdate() {
+
+        if (navigationFrame !== null) {
+            return;
+        }
+
+
+        navigationFrame =
+            requestAnimationFrame(() => {
+
+                updateActiveNavigation();
+
+                navigationFrame = null;
+
+            });
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        requestNavigationUpdate,
+        { passive: true }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        requestNavigationUpdate,
+        { passive: true }
+    );
+
+
+    /*
+     * Initial state.
+     */
+
+    updateActiveNavigation();
+
+
+    /* =====================================================
+       NAVIGATION CLICK
+       
+       The clicked item becomes active immediately,
+       then normal scrolling logic takes control again.
+    ===================================================== */
+
+    function handleNavigationClick(event) {
+
+        const link =
+            event.currentTarget;
+
+        const href =
+            link.getAttribute("href");
+
+
+        if (
+            !href ||
+            !href.startsWith("#") ||
+            href === "#"
+        ) {
+            return;
+        }
+
+
+        const target =
+            document.querySelector(href);
+
+
+        if (!target) {
+            return;
+        }
+
+
+        event.preventDefault();
+
+
+        /*
+         * Immediately show the destination as active.
+         */
+
+        setActiveSection(
+            target.id
+        );
+
+
+        /*
+         * Calculate the correct scroll position
+         * below the fixed navbar.
+         */
+
+        const navbarHeight =
+            navbar
+                ? navbar.offsetHeight
+                : 0;
+
+
+        const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            navbarHeight -
+            12;
+
+
+        window.scrollTo({
+
+            top: Math.max(
+                0,
+                targetPosition
+            ),
+
+            behavior: "smooth"
+
+        });
+
+
+        /*
+         * Close mobile navigation.
+         */
+
+        if (
+            mobileMenu &&
+            mobileMenu.classList.contains("open")
+        ) {
+
+            closeMenu();
+
+        }
+
+    }
+
+
+    desktopLinks.forEach(link => {
+
+        link.addEventListener(
+            "click",
+            handleNavigationClick
+        );
+
+    });
+
+
+    mobileNavLinks.forEach(link => {
+
+        link.addEventListener(
+            "click",
+            handleNavigationClick
+        );
+
+    });
+
+
+    /* =====================================================
+       ESCAPE KEY
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MOBILE MENU ON DESKTOP RESIZE
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 1000
+            ) {
+
+                closeMenu();
+
+            }
+
+        }
+    );
+
+
+})();
+
+</script>
 
 </body>
 </html>
