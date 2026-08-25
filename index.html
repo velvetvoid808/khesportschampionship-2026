@@ -16,123 +16,6 @@
     <style>
 
         /* =====================================================
-           GLOBAL ANIMATION SYSTEM
-        ===================================================== */
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        /* =====================================================
-           PAGE LOAD
-        ===================================================== */
-
-        body {
-            animation: pageFadeIn 0.8s ease both;
-        }
-
-        @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-
-        /* =====================================================
-           SCROLL REVEAL SYSTEM
-        ===================================================== */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(35px);
-            transition:
-                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-35px);
-            transition:
-                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(35px);
-            transition:
-                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.94);
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal-scale.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-
-        /* =====================================================
-           STAGGER ANIMATIONS
-        ===================================================== */
-
-        .stagger-1 {
-            transition-delay: 0.08s;
-        }
-
-        .stagger-2 {
-            transition-delay: 0.16s;
-        }
-
-        .stagger-3 {
-            transition-delay: 0.24s;
-        }
-
-        .stagger-4 {
-            transition-delay: 0.32s;
-        }
-
-        .stagger-5 {
-            transition-delay: 0.40s;
-        }
-
-        .stagger-6 {
-            transition-delay: 0.48s;
-        }
-
-
-        /* =====================================================
            NAVIGATION SYSTEM
         ===================================================== */
 
@@ -182,7 +65,6 @@
 
         .nav-links a::after {
             content: "";
-
             position: absolute;
 
             left: 0;
@@ -216,23 +98,15 @@
 
 
         /* =====================================================
-           NAV ACTION BUTTONS
+           REGISTER BUTTON
         ===================================================== */
 
-        .nav-button,
-        .nav-rules-button {
+        .nav-button {
             position: relative;
             overflow: hidden;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            white-space: nowrap;
         }
 
-        .nav-button::before,
-        .nav-rules-button::before {
+        .nav-button::before {
             content: "";
 
             position: absolute;
@@ -257,97 +131,20 @@
                 left 0.55s ease;
         }
 
-        .nav-button:hover::before,
-        .nav-rules-button:hover::before {
+        .nav-button:hover::before {
             left: 150%;
         }
 
 
         /* =====================================================
-           RULEBOOK NAV BUTTON
-           
-           Designed to sit beside REGISTER.
-        ===================================================== */
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            gap: 8px;
-
-            margin-left: auto;
-        }
-
-        .nav-rules-button {
-            min-height: 42px;
-
-            padding: 0 15px;
-
-            border:
-                1px solid
-                rgba(168,85,247,0.38);
-
-            background:
-                rgba(168,85,247,0.055);
-
-            color: #d9dce5;
-
-            font-size: 9px;
-            font-weight: 800;
-
-            letter-spacing: 0.15em;
-
-            transition:
-                background 0.3s ease,
-                border-color 0.3s ease,
-                color 0.3s ease,
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .nav-rules-button:hover {
-            color: #ffffff;
-
-            background:
-                rgba(168,85,247,0.12);
-
-            border-color:
-                rgba(168,85,247,0.7);
-
-            box-shadow:
-                0 0 22px
-                rgba(168,85,247,0.12);
-
-            transform:
-                translateY(-1px);
-        }
-
-        .nav-button {
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .nav-button:hover {
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 8px 25px
-                rgba(168,85,247,0.15);
-        }
-
-
-        /* =====================================================
-           MOBILE MENU BUTTON
+           HAMBURGER BUTTON
         ===================================================== */
 
         .menu-toggle {
             display: none;
 
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
 
             padding: 0;
 
@@ -363,6 +160,19 @@
             position: relative;
 
             z-index: 1101;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .menu-toggle:hover {
+            border-color:
+                rgba(168,85,247,0.45);
+
+            background:
+                rgba(168,85,247,0.06);
         }
 
         .menu-toggle span {
@@ -370,7 +180,7 @@
 
             left: 11px;
 
-            width: 19px;
+            width: 21px;
             height: 1px;
 
             background: #f4f5f7;
@@ -409,7 +219,7 @@
 
 
         /* =====================================================
-           MOBILE NAVIGATION PANEL
+           MOBILE / TABLET MENU
         ===================================================== */
 
         .mobile-menu {
@@ -421,10 +231,10 @@
 
             z-index: 1099;
 
-            padding: 18px 16px 24px;
+            padding: 22px 18px 26px;
 
             background:
-                rgba(6,7,11,0.96);
+                rgba(6,7,11,0.97);
 
             backdrop-filter:
                 blur(24px);
@@ -438,7 +248,7 @@
 
             box-shadow:
                 0 20px 50px
-                rgba(0,0,0,0.35);
+                rgba(0,0,0,0.38);
 
             opacity: 0;
             visibility: hidden;
@@ -462,14 +272,14 @@
 
         .mobile-menu-inner {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
         .mobile-menu-label {
             display: block;
 
-            margin-bottom: 12px;
+            margin-bottom: 14px;
 
             font-size: 8px;
             letter-spacing: 0.22em;
@@ -483,16 +293,16 @@
             grid-template-columns:
                 repeat(2, 1fr);
 
-            gap: 8px;
+            gap: 9px;
         }
 
         .mobile-links a {
-            min-height: 54px;
+            min-height: 52px;
 
             display: flex;
             align-items: center;
 
-            padding: 0 16px;
+            padding: 0 17px;
 
             border:
                 1px solid
@@ -527,16 +337,68 @@
                 translateX(3px);
         }
 
+
+        /* =====================================================
+           SPECIAL MOBILE MENU LINKS
+        ===================================================== */
+
+        .mobile-extra-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 9px;
+
+            margin-top: 9px;
+        }
+
+        .mobile-rules-book,
         .mobile-register {
+            min-height: 52px;
+
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            min-height: 52px;
+            padding: 0 16px;
 
-            margin-top: 10px;
+            font-size: 9px;
+            font-weight: 800;
 
+            letter-spacing: 0.16em;
+
+            text-align: center;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .mobile-rules-book {
+            border:
+                1px solid
+                rgba(34,211,238,0.28);
+
+            background:
+                rgba(34,211,238,0.035);
+
+            color: #d7f7ff;
+        }
+
+        .mobile-rules-book:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(34,211,238,0.55);
+
+            background:
+                rgba(34,211,238,0.08);
+        }
+
+        .mobile-register {
             border:
                 1px solid
                 rgba(168,85,247,0.45);
@@ -548,55 +410,14 @@
                     rgba(34,211,238,0.06)
                 );
 
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 0.18em;
+            color: #f4f5f7;
         }
 
-
-        /* =====================================================
-           MOBILE RULEBOOK
-        ===================================================== */
-
-        .mobile-rulebook {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            min-height: 52px;
-
-            margin-top: 8px;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.10);
-
-            background:
-                rgba(255,255,255,0.025);
-
-            color: #aeb4c3;
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 0.18em;
-
-            transition:
-                color 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .mobile-rulebook:hover {
-            color: #ffffff;
-
-            background:
-                rgba(168,85,247,0.08);
+        .mobile-register:hover {
+            transform: translateY(-2px);
 
             border-color:
-                rgba(168,85,247,0.35);
+                rgba(168,85,247,0.7);
         }
 
 
@@ -627,261 +448,8 @@
             visibility: visible;
         }
 
-
-        /* =====================================================
-           PREVENT SCROLLING WHILE MENU OPEN
-        ===================================================== */
-
         body.menu-open {
             overflow: hidden;
-        }
-
-
-        /* =====================================================
-           CARD MICRO-INTERACTIONS
-        ===================================================== */
-
-        .title-card,
-        .schedule-card,
-        .prize-card,
-        .feature-card,
-        .rule,
-        .stat-card,
-        .objective {
-            transition:
-                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.35s ease,
-                box-shadow 0.35s ease;
-        }
-
-        .title-card:hover {
-            transform:
-                translateY(-6px);
-        }
-
-        .schedule-card:hover {
-            transform:
-                translateY(-4px);
-        }
-
-        .prize-card:hover {
-            transform:
-                translateY(-5px);
-        }
-
-        .feature-card:hover,
-        .rule:hover,
-        .objective:hover {
-            transform:
-                translateX(4px);
-        }
-
-        .stat-card:hover {
-            transform:
-                translateY(-4px);
-        }
-
-
-        /* =====================================================
-           HERO ANIMATION
-        ===================================================== */
-
-        .hero-content {
-            animation:
-                heroContentIn
-                1.1s
-                cubic-bezier(0.22, 1, 0.36, 1)
-                both;
-        }
-
-        .hero-side {
-            animation:
-                heroSideIn
-                1.2s
-                0.2s
-                cubic-bezier(0.22, 1, 0.36, 1)
-                both;
-        }
-
-        .hero-bottom {
-            animation:
-                heroBottomIn
-                1s
-                0.35s
-                cubic-bezier(0.22, 1, 0.36, 1)
-                both;
-        }
-
-        @keyframes heroContentIn {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform:
-                    translateY(0);
-            }
-        }
-
-        @keyframes heroSideIn {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateX(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform:
-                    translateX(0);
-            }
-        }
-
-        @keyframes heroBottomIn {
-
-            from {
-                opacity: 0;
-                transform:
-                    translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform:
-                    translateY(0);
-            }
-        }
-
-
-        /* =====================================================
-           HERO GRID MOTION
-        ===================================================== */
-
-        .hero-grid {
-            animation:
-                gridPulse
-                8s
-                ease-in-out
-                infinite;
-        }
-
-        @keyframes gridPulse {
-
-            0%,
-            100% {
-                opacity: 0.55;
-                transform:
-                    scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform:
-                    scale(1.015);
-            }
-        }
-
-
-        /* =====================================================
-           BUTTON ARROW MOTION
-        ===================================================== */
-
-        .primary-button span,
-        .secondary-button span,
-        .card-arrow {
-            transition:
-                transform 0.3s ease;
-        }
-
-        .primary-button:hover span,
-        .secondary-button:hover span,
-        .title-card:hover .card-arrow {
-            transform:
-                translate(3px, -3px);
-        }
-
-
-        /* =====================================================
-           FORMAT FLOW
-        ===================================================== */
-
-        .flow-line {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .flow-line::after {
-            content: "";
-
-            position: absolute;
-
-            left: -100%;
-            top: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(168,85,247,0.8),
-                    transparent
-                );
-
-            animation:
-                flowLine
-                3s
-                ease-in-out
-                infinite;
-        }
-
-        @keyframes flowLine {
-
-            0% {
-                left: -100%;
-            }
-
-            50% {
-                left: 100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION ACCESSIBILITY
-        ===================================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .reveal,
-            .reveal-left,
-            .reveal-right,
-            .reveal-scale {
-                opacity: 1;
-                transform: none;
-            }
         }
 
 
@@ -889,9 +457,10 @@
            RESPONSIVE NAVIGATION
         ===================================================== */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
 
-            .nav-links {
+            .nav-links,
+            .nav-button {
                 display: none;
             }
 
@@ -903,11 +472,10 @@
                 gap: 12px;
             }
 
-            .nav-actions {
+            .menu-toggle {
                 margin-left: auto;
             }
         }
-
 
         @media (max-width: 760px) {
 
@@ -915,39 +483,18 @@
                 height: 68px;
             }
 
-            .nav-actions {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-
-        @media (min-width: 761px) and (max-width: 1000px) {
-
             .mobile-menu {
-                top: 78px;
-            }
-
-            .nav-actions {
-                display: flex;
-            }
-
-            .nav-rules-button {
-                display: inline-flex;
-            }
-
-            .nav-button {
-                display: inline-flex;
+                top: 68px;
             }
         }
 
-
-        @media (max-width: 500px) {
+        @media (max-width: 520px) {
 
             .mobile-links {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-extra-links {
                 grid-template-columns: 1fr;
             }
 
@@ -958,13 +505,169 @@
 
 
         /* =====================================================
-           VERY SMALL SCREENS
+           SCROLL REVEAL ANIMATIONS
+           
+           IMPORTANT:
+           Elements are intentionally reset when they leave
+           the viewport, allowing the animation to replay.
         ===================================================== */
 
-        @media (max-width: 380px) {
+        .reveal {
+            opacity: 0;
 
-            .logo-text {
-                display: none;
+            transform:
+                translateY(42px);
+
+            transition:
+                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+            will-change:
+                opacity,
+                transform;
+        }
+
+        .reveal.reveal-visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* Direction variations */
+
+        .reveal-left {
+            opacity: 0;
+
+            transform:
+                translateX(-50px);
+
+            transition:
+                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-left.reveal-visible {
+            opacity: 1;
+
+            transform:
+                translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+
+            transform:
+                translateX(50px);
+
+            transition:
+                opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-right.reveal-visible {
+            opacity: 1;
+
+            transform:
+                translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+
+            transform:
+                scale(0.94);
+
+            transition:
+                opacity 0.75s ease,
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-scale.reveal-visible {
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+
+
+        /* =====================================================
+           STAGGERED ANIMATION DELAYS
+        ===================================================== */
+
+        .reveal-delay-1 {
+            transition-delay: 0.08s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.16s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.24s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.32s;
+        }
+
+        .reveal-delay-5 {
+            transition-delay: 0.40s;
+        }
+
+        .reveal-delay-6 {
+            transition-delay: 0.48s;
+        }
+
+
+        /* =====================================================
+           HERO ANIMATION
+        ===================================================== */
+
+        .hero-content {
+            animation:
+                heroContentIn 1.1s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                both;
+        }
+
+        @keyframes heroContentIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION ACCESSIBILITY
+        ===================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal,
+            .reveal-left,
+            .reveal-right,
+            .reveal-scale {
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
 
@@ -982,17 +685,11 @@
 
     <div class="nav-container">
 
-        <!-- LOGO -->
+        <a href="#home"
+           class="logo"
+           aria-label="KH Esports Championship Home">
 
-        <a
-            href="#home"
-            class="logo"
-            aria-label="KH Esports Championship Home"
-        >
-
-            <span class="logo-kh">
-                KH
-            </span>
+            <span class="logo-kh">KH</span>
 
             <span class="logo-text">
                 ESPORTS
@@ -1003,75 +700,38 @@
 
         <!-- DESKTOP NAVIGATION -->
 
-        <nav
-            class="nav-links"
-            aria-label="Main navigation"
-        >
+        <nav class="nav-links" aria-label="Main navigation">
 
-            <a href="#home" class="active">
-                HOME
-            </a>
+            <a href="#home" class="active">HOME</a>
 
-            <a href="#about">
-                ABOUT
-            </a>
+            <a href="#about">ABOUT</a>
 
-            <a href="#titles">
-                TITLES
-            </a>
+            <a href="#titles">TITLES</a>
 
-            <a href="#tournament">
-                TOURNAMENT
-            </a>
+            <a href="#tournament">TOURNAMENT</a>
 
-            <a href="#schedule">
-                SCHEDULE
-            </a>
+            <a href="#schedule">SCHEDULE</a>
 
-            <a href="#prizes">
-                PRIZES
-            </a>
+            <a href="#prizes">PRIZES</a>
 
-            <a href="#rules">
-                RULES
-            </a>
+            <a href="#rules">RULES</a>
 
         </nav>
 
 
-        <!-- =================================================
-             NAV ACTIONS
-        ================================================== -->
+        <!-- DESKTOP REGISTER -->
 
-        <div class="nav-actions">
-
-            <!-- RULEBOOK -->
-
-            <a
-                href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-                class="nav-rules-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                RULEBOOK ↗
-            </a>
+        <a
+            href="https://forms.gle/n1F13zaxE4oSdtKV6"
+            class="nav-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            REGISTER
+        </a>
 
 
-            <!-- REGISTER -->
-
-            <a
-                href="https://forms.gle/n1F13zaxE4oSdtKV6"
-                class="nav-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                REGISTER
-            </a>
-
-        </div>
-
-
-        <!-- MOBILE MENU BUTTON -->
+        <!-- HAMBURGER -->
 
         <button
             class="menu-toggle"
@@ -1095,16 +755,10 @@
      MOBILE MENU
 ===================================================== -->
 
-<div
-    class="menu-backdrop"
-    id="menuBackdrop"
-></div>
+<div class="menu-backdrop" id="menuBackdrop"></div>
 
 
-<div
-    class="mobile-menu"
-    id="mobileMenu"
->
+<div class="mobile-menu" id="mobileMenu">
 
     <div class="mobile-menu-inner">
 
@@ -1149,28 +803,32 @@
         </nav>
 
 
-        <!-- MOBILE RULEBOOK -->
+        <div class="mobile-extra-links">
 
-        <a
-            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-            class="mobile-rulebook"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            VIEW RULEBOOK ↗
-        </a>
+            <!-- RULES BOOK -->
+
+            <a
+                href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
+                class="mobile-rules-book"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                RULES BOOK ↗
+            </a>
 
 
-        <!-- MOBILE REGISTER -->
+            <!-- REGISTRATION -->
 
-        <a
-            href="https://forms.gle/n1F13zaxE4oSdtKV6"
-            class="mobile-register"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            REGISTER NOW ↗
-        </a>
+            <a
+                href="https://forms.gle/n1F13zaxE4oSdtKV6"
+                class="mobile-register"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                REGISTER NOW ↗
+            </a>
+
+        </div>
 
     </div>
 
@@ -1229,18 +887,12 @@
 
         <div class="hero-actions">
 
-            <a
-                href="#titles"
-                class="primary-button"
-            >
+            <a href="#titles" class="primary-button">
                 EXPLORE CHAMPIONSHIP
                 <span>↗</span>
             </a>
 
-            <a
-                href="#tournament"
-                class="secondary-button"
-            >
+            <a href="#tournament" class="secondary-button">
                 VIEW FORMAT
             </a>
 
@@ -1299,7 +951,7 @@
 
 <section class="stats-section">
 
-    <div class="stat-card reveal-scale stagger-1">
+    <div class="stat-card reveal reveal-delay-1">
 
         <span class="stat-number">
             32
@@ -1312,7 +964,7 @@
     </div>
 
 
-    <div class="stat-card reveal-scale stagger-2">
+    <div class="stat-card reveal reveal-delay-2">
 
         <span class="stat-number">
             5
@@ -1325,7 +977,7 @@
     </div>
 
 
-    <div class="stat-card reveal-scale stagger-3">
+    <div class="stat-card reveal reveal-delay-3">
 
         <span class="stat-number">
             RM1,300
@@ -1338,7 +990,7 @@
     </div>
 
 
-    <div class="stat-card reveal-scale stagger-4">
+    <div class="stat-card reveal reveal-delay-4">
 
         <span class="stat-number">
             2
@@ -1357,10 +1009,7 @@
      ABOUT
 ===================================================== -->
 
-<section
-    id="about"
-    class="section about-section"
->
+<section id="about" class="section about-section">
 
     <div class="section-heading reveal">
 
@@ -1408,7 +1057,7 @@
 
         <div class="about-objectives">
 
-            <div class="objective reveal-right stagger-1">
+            <div class="objective reveal reveal-delay-1">
 
                 <span>01</span>
 
@@ -1419,7 +1068,7 @@
             </div>
 
 
-            <div class="objective reveal-right stagger-2">
+            <div class="objective reveal reveal-delay-2">
 
                 <span>02</span>
 
@@ -1430,7 +1079,7 @@
             </div>
 
 
-            <div class="objective reveal-right stagger-3">
+            <div class="objective reveal reveal-delay-3">
 
                 <span>03</span>
 
@@ -1441,7 +1090,7 @@
             </div>
 
 
-            <div class="objective reveal-right stagger-4">
+            <div class="objective reveal reveal-delay-4">
 
                 <span>04</span>
 
@@ -1462,10 +1111,7 @@
      TITLES
 ===================================================== -->
 
-<section
-    id="titles"
-    class="section titles-section"
->
+<section id="titles" class="section titles-section">
 
     <div class="section-heading reveal">
 
@@ -1490,8 +1136,7 @@
 
     <div class="title-grid">
 
-
-        <article class="title-card hok-card reveal-scale">
+        <article class="title-card hok-card reveal-left">
 
             <div class="title-number">
                 01
@@ -1555,7 +1200,7 @@
         </article>
 
 
-        <article class="title-card mlbb-card reveal-scale stagger-2">
+        <article class="title-card mlbb-card reveal-right">
 
             <div class="title-number">
                 02
@@ -1627,10 +1272,7 @@
      TOURNAMENT FORMAT
 ===================================================== -->
 
-<section
-    id="tournament"
-    class="section tournament-section"
->
+<section id="tournament" class="section tournament-section">
 
     <div class="section-heading reveal">
 
@@ -1655,7 +1297,7 @@
 
     <div class="format-flow">
 
-        <div class="format-step reveal-scale stagger-1">
+        <div class="format-step reveal reveal-delay-1">
 
             <span>01</span>
 
@@ -1673,7 +1315,7 @@
         <div class="flow-line"></div>
 
 
-        <div class="format-step reveal-scale stagger-2">
+        <div class="format-step reveal reveal-delay-2">
 
             <span>02</span>
 
@@ -1691,7 +1333,7 @@
         <div class="flow-line"></div>
 
 
-        <div class="format-step reveal-scale stagger-3">
+        <div class="format-step reveal reveal-delay-3">
 
             <span>03</span>
 
@@ -1709,7 +1351,7 @@
         <div class="flow-line"></div>
 
 
-        <div class="format-step reveal-scale stagger-4">
+        <div class="format-step reveal reveal-delay-4">
 
             <span>04</span>
 
@@ -1727,7 +1369,7 @@
         <div class="flow-line"></div>
 
 
-        <div class="format-step reveal-scale stagger-5">
+        <div class="format-step reveal reveal-delay-5">
 
             <span>05</span>
 
@@ -1745,7 +1387,7 @@
         <div class="flow-line"></div>
 
 
-        <div class="format-step final-step reveal-scale stagger-6">
+        <div class="format-step final-step reveal reveal-delay-6">
 
             <span>06</span>
 
@@ -1764,7 +1406,7 @@
 
     <div class="format-features">
 
-        <div class="feature-card reveal stagger-1">
+        <div class="feature-card reveal reveal-delay-1">
 
             <span>
                 GLOBAL BP
@@ -1778,7 +1420,7 @@
         </div>
 
 
-        <div class="feature-card reveal stagger-2">
+        <div class="feature-card reveal reveal-delay-2">
 
             <span>
                 NO SEEDING
@@ -1792,7 +1434,7 @@
         </div>
 
 
-        <div class="feature-card reveal stagger-3">
+        <div class="feature-card reveal reveal-delay-3">
 
             <span>
                 ELIMINATION
@@ -1814,10 +1456,7 @@
      SCHEDULE
 ===================================================== -->
 
-<section
-    id="schedule"
-    class="section schedule-section"
->
+<section id="schedule" class="section schedule-section">
 
     <div class="section-heading reveal">
 
@@ -1842,7 +1481,7 @@
 
     <div class="schedule-grid">
 
-        <article class="schedule-card reveal-left stagger-1">
+        <article class="schedule-card reveal reveal-delay-1">
 
             <div class="schedule-date">
 
@@ -1874,7 +1513,7 @@
         </article>
 
 
-        <article class="schedule-card reveal-right stagger-2">
+        <article class="schedule-card reveal reveal-delay-2">
 
             <div class="schedule-date">
 
@@ -1906,7 +1545,7 @@
         </article>
 
 
-        <article class="schedule-card reveal-left stagger-3">
+        <article class="schedule-card reveal reveal-delay-3">
 
             <div class="schedule-date">
 
@@ -1938,7 +1577,7 @@
         </article>
 
 
-        <article class="schedule-card reveal-right stagger-4">
+        <article class="schedule-card reveal reveal-delay-4">
 
             <div class="schedule-date">
 
@@ -1995,10 +1634,7 @@
      PRIZES
 ===================================================== -->
 
-<section
-    id="prizes"
-    class="section prizes-section"
->
+<section id="prizes" class="section prizes-section">
 
     <div class="section-heading reveal">
 
@@ -2040,7 +1676,7 @@
 
     <div class="prize-grid">
 
-        <div class="prize-card reveal-scale stagger-1">
+        <div class="prize-card reveal reveal-delay-1">
 
             <span>
                 01
@@ -2057,7 +1693,7 @@
         </div>
 
 
-        <div class="prize-card reveal-scale stagger-2">
+        <div class="prize-card reveal reveal-delay-2">
 
             <span>
                 02
@@ -2074,7 +1710,7 @@
         </div>
 
 
-        <div class="prize-card reveal-scale stagger-3">
+        <div class="prize-card reveal reveal-delay-3">
 
             <span>
                 03
@@ -2091,7 +1727,7 @@
         </div>
 
 
-        <div class="prize-card fmvp-card reveal-scale stagger-4">
+        <div class="prize-card fmvp-card reveal reveal-delay-4">
 
             <span>
                 FMVP
@@ -2114,14 +1750,9 @@
 
 <!-- =====================================================
      RULES
-     
-     ORIGINAL RULES SECTION PRESERVED
 ===================================================== -->
 
-<section
-    id="rules"
-    class="section rules-section"
->
+<section id="rules" class="section rules-section">
 
     <div class="section-heading reveal">
 
@@ -2146,7 +1777,7 @@
 
     <div class="rules-grid">
 
-        <div class="rule reveal-left stagger-1">
+        <div class="rule reveal reveal-delay-1">
 
             <span>
                 01
@@ -2168,7 +1799,7 @@
         </div>
 
 
-        <div class="rule reveal-right stagger-2">
+        <div class="rule reveal reveal-delay-2">
 
             <span>
                 02
@@ -2191,7 +1822,7 @@
         </div>
 
 
-        <div class="rule reveal-left stagger-3">
+        <div class="rule reveal reveal-delay-3">
 
             <span>
                 03
@@ -2213,7 +1844,7 @@
         </div>
 
 
-        <div class="rule reveal-right stagger-4">
+        <div class="rule reveal reveal-delay-4">
 
             <span>
                 04
@@ -2236,32 +1867,6 @@
 
     </div>
 
-
-    <!-- =================================================
-         FULL RULEBOOK LINK
-    ================================================== -->
-
-    <div
-        class="reveal-scale"
-        style="
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-        "
-    >
-
-        <a
-            href="https://docs.google.com/document/d/1CHqOSmuEXEscJ_CEOeg7fHXTDzFF-yI-7PfxptN_4qU/edit?usp=drivesdk"
-            class="primary-button"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            VIEW FULL RULEBOOK
-            <span>↗</span>
-        </a>
-
-    </div>
-
 </section>
 
 
@@ -2269,10 +1874,7 @@
      REGISTRATION
 ===================================================== -->
 
-<section
-    id="register"
-    class="register-section"
->
+<section id="register" class="register-section">
 
     <div class="register-grid"></div>
 
@@ -2419,9 +2021,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sections =
         Array.from(
-            document.querySelectorAll(
-                "main section[id]"
-            )
+            document.querySelectorAll("main section[id]")
         );
 
 
@@ -2434,7 +2034,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!navbar) {
             return;
         }
-
 
         if (window.scrollY > 30) {
 
@@ -2450,7 +2049,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SET ACTIVE NAVIGATION
+       ACTIVE NAVIGATION
     ===================================================== */
 
     function setActiveSection(sectionId) {
@@ -2460,7 +2059,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const isActive =
                 link.getAttribute("href") ===
                 "#" + sectionId;
-
 
             link.classList.toggle(
                 "active",
@@ -2476,7 +2074,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.getAttribute("href") ===
                 "#" + sectionId;
 
-
             link.classList.toggle(
                 "active",
                 isActive
@@ -2487,10 +2084,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       DETERMINE CURRENT SECTION
-    ===================================================== */
-
     function getCurrentSection() {
 
         if (!sections.length) {
@@ -2499,9 +2092,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const navbarHeight =
-            navbar
-                ? navbar.offsetHeight
-                : 0;
+            navbar ? navbar.offsetHeight : 0;
 
 
         const activationPoint =
@@ -2543,10 +2134,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       UPDATE ACTIVE NAVIGATION
-    ===================================================== */
-
     function updateActiveNavigation() {
 
         const currentSection =
@@ -2571,9 +2158,7 @@ document.addEventListener("DOMContentLoaded", () => {
             !menuBackdrop ||
             !menuToggle
         ) {
-
             return;
-
         }
 
 
@@ -2610,9 +2195,7 @@ document.addEventListener("DOMContentLoaded", () => {
             !menuBackdrop ||
             !menuToggle
         ) {
-
             return;
-
         }
 
 
@@ -2642,6 +2225,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    if (menuToggle) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    mobileMenu.classList.contains(
+                        "open"
+                    )
+                ) {
+
+                    closeMenu();
+
+                } else {
+
+                    openMenu();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (menuBackdrop) {
+
+        menuBackdrop.addEventListener(
+            "click",
+            closeMenu
+        );
+
+    }
+
+
     /* =====================================================
        NAVIGATION CLICK
     ===================================================== */
@@ -2661,9 +2280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             !href.startsWith("#") ||
             href === "#"
         ) {
-
             return;
-
         }
 
 
@@ -2672,9 +2289,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const target =
-            document.getElementById(
-                targetId
-            );
+            document.getElementById(targetId);
 
 
         if (!target) {
@@ -2689,9 +2304,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const navbarHeight =
-            navbar
-                ? navbar.offsetHeight
-                : 0;
+            navbar ? navbar.offsetHeight : 0;
 
 
         const targetTop =
@@ -2730,10 +2343,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       DESKTOP NAVIGATION
-    ===================================================== */
-
     desktopLinks.forEach(link => {
 
         link.addEventListener(
@@ -2744,10 +2353,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-
     mobileLinks.forEach(link => {
 
         link.addEventListener(
@@ -2756,50 +2361,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
-
-
-    /* =====================================================
-       MOBILE MENU BUTTON
-    ===================================================== */
-
-    if (menuToggle) {
-
-        menuToggle.addEventListener(
-            "click",
-            () => {
-
-                if (
-                    mobileMenu.classList.contains(
-                        "open"
-                    )
-                ) {
-
-                    closeMenu();
-
-                } else {
-
-                    openMenu();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       MOBILE BACKDROP
-    ===================================================== */
-
-    if (menuBackdrop) {
-
-        menuBackdrop.addEventListener(
-            "click",
-            closeMenu
-        );
-
-    }
 
 
     /* =====================================================
@@ -2831,7 +2392,7 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
             if (
-                window.innerWidth > 1000
+                window.innerWidth > 1100
             ) {
 
                 closeMenu();
@@ -2846,7 +2407,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SCROLL
+       SCROLL SYSTEM
     ===================================================== */
 
     let scrollTicking =
@@ -2904,9 +2465,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (hash) {
 
                 const target =
-                    document.querySelector(
-                        hash
-                    );
+                    document.querySelector(hash);
 
 
                 if (target) {
@@ -2951,8 +2510,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
+       REPEATING SCROLL REVEAL
+       
+       THIS IS THE IMPORTANT PART.
+       
+       Unlike a one-time animation, this observer
+       removes the visible class whenever an element
+       leaves the viewport.
+       
+       Therefore:
+       
+       scroll down  -> animation plays
+       scroll up    -> animation resets
+       scroll down  -> animation plays again
+       ===================================================== */
 
     const revealElements =
         document.querySelectorAll(
@@ -2960,72 +2531,47 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    if (
-        "IntersectionObserver" in window
-    ) {
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
 
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
+                entries.forEach(entry => {
 
-                    entries.forEach(
-                        entry => {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                            if (
-                                entry.isIntersecting
-                            ) {
+                        entry.target.classList.add(
+                            "reveal-visible"
+                        );
 
-                                entry.target.classList.add(
-                                    "visible"
-                                );
+                    } else {
 
+                        entry.target.classList.remove(
+                            "reveal-visible"
+                        );
 
-                                revealObserver.unobserve(
-                                    entry.target
-                                );
+                    }
 
-                            }
+                });
 
-                        }
-                    );
+            },
+            {
+                threshold: 0.12,
 
-                },
-                {
-                    threshold: 0.12,
-
-                    rootMargin:
-                        "0px 0px -50px 0px"
-                }
-            );
-
-
-        revealElements.forEach(
-            element => {
-
-                revealObserver.observe(
-                    element
-                );
-
+                rootMargin:
+                    "0px 0px -8% 0px"
             }
         );
 
-    } else {
 
-        /*
-         * Fallback for older browsers.
-         */
+    revealElements.forEach(element => {
 
-        revealElements.forEach(
-            element => {
-
-                element.classList.add(
-                    "visible"
-                );
-
-            }
+        revealObserver.observe(
+            element
         );
 
-    }
+    });
 
 
     /* =====================================================
@@ -3038,7 +2584,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /*
-     * Recalculate after layout settles.
+     * Give the browser a moment to finish layout,
+     * fonts and restored scroll position.
      */
 
     window.setTimeout(
