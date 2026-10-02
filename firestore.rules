@@ -1,0 +1,24 @@
+// KH Esports Advertisement System
+//
+// IMPORTANT: keep your existing rules for brackets and other collections.
+// Add the advertisements rule below to those existing rules rather than
+// blindly replacing the entire ruleset.
+//
+// This version assumes the Admin Panel is the only authenticated area of
+// the project. If your Firebase project has other authenticated users,
+// replace `request.auth != null` with a stricter admin check (for example,
+// a custom admin claim or a specific admin UID).
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /advertisements/{advertisementId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Keep your project's existing collection rules below this point.
+    // Do not delete them when applying the advertisement rule above.
+  }
+}
